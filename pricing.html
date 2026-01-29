@@ -1,94 +1,178 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Pricing & Packages | Zyrova Digital</title>
-    <meta name="description" content="Transparent web design pricing. One-time fees, no monthly rentals. You own your code. Packages starting from $199.">
-    <link rel="canonical" href="https://zyrova.com/pricing">
+    <title>Zyrova // INFINITE LEDGER</title>
+    <meta name="theme-color" content="#000000">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-    
+
     <style>
-        /* Page-Specific Styles */
-        .price-card-popular {
-            border: 1px solid var(--c-brand-light);
-            transform: scale(1.05);
-            box-shadow: var(--shadow-neon);
-            z-index: 10;
-            background: rgba(14, 116, 144, 0.1);
+        /* --- GOD MODE: INFINITE LEDGER STYLES --- */
+        body { background: #000; overflow-x: hidden; padding-top: 40px; }
+
+        /* FEATURE 1: SYSTEM HUD */
+        .system-hud {
+            position: fixed; top: 0; left: 0; width: 100%; height: 40px;
+            background: rgba(5, 10, 20, 0.9); border-bottom: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px); z-index: 9999;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--c-brand-light);
         }
-        
-        .check-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .blink-red { animation: blink-red 1s infinite; width: 6px; height: 6px; background: var(--c-success); border-radius: 50%; }
+        @keyframes blink-red { 50% { opacity: 0; } }
+
+        /* FEATURE 2: QUANTUM SWITCH */
+        .quantum-container { display: flex; justify-content: center; margin: 4rem 0; position: relative; z-index: 10; }
+        .quantum-switch {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px; padding: 0.5rem; display: flex; gap: 1rem; position: relative;
         }
-        .check-list svg {
-            flex-shrink: 0;
-            color: var(--c-success);
-            margin-top: 2px;
+        .switch-opt {
+            padding: 1rem 3rem; border-radius: 40px; cursor: pointer;
+            font-family: 'Outfit'; font-weight: 700; color: var(--text-tertiary); transition: 0.3s; position: relative; z-index: 2;
         }
-        
-        /* FAQ Styling */
-        details {
-            border-bottom: 1px solid var(--border-glass);
-            padding: 1.5rem 0;
-            transition: all 0.3s ease;
+        .switch-opt.active { color: #000; }
+        .switch-glider {
+            position: absolute; top: 0.5rem; left: 0.5rem; height: calc(100% - 1rem); width: 50%;
+            background: var(--c-brand-light); border-radius: 40px; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 1;
+            box-shadow: 0 0 30px var(--c-brand-light);
         }
-        details[open] { padding-bottom: 2rem; }
-        summary {
-            font-weight: 600;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.1rem;
-            color: var(--text-primary);
+
+        /* FEATURE 3: HOLOGRAPHIC PRISMS */
+        .prism-card {
+            background: rgba(10, 10, 10, 0.6); border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px); padding: 4rem 2rem; position: relative;
+            transform-style: preserve-3d; transition: transform 0.1s, height 0.3s;
+            overflow: hidden; display: flex; flex-direction: column;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
         }
-        summary::-webkit-details-marker { display: none; }
-        summary::after {
-            content: '+';
-            font-size: 1.5rem;
-            font-weight: 300;
-            transition: transform 0.3s;
+        .prism-card:hover { border-color: rgba(255,255,255,0.2); background: rgba(15, 23, 42, 0.8); z-index: 5; }
+        .mega-price {
+            font-family: 'Outfit'; font-weight: 900; font-size: 5rem; line-height: 0.9;
+            background: linear-gradient(180deg, #fff, rgba(255,255,255,0.5));
+            -webkit-background-clip: text; color: transparent;
         }
-        details[open] summary::after { transform: rotate(45deg); color: var(--c-brand-light); }
-        .faq-answer {
-            margin-top: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            animation: slideDown 0.3s ease-out;
+
+        /* FEATURE 4: SCHEMATIC EXPANSION */
+        .schematic-panel {
+            max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0,0,0,0.3); margin: 0 -2rem; padding: 0 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
+        .prism-card.open .schematic-panel { max-height: 400px; padding-top: 1.5rem; padding-bottom: 1.5rem; }
+        .schematic-btn {
+            background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--text-tertiary);
+            font-family: 'JetBrains Mono'; font-size: 0.7rem; cursor: pointer; width: 100%;
+            padding: 0.8rem; margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+            transition: 0.3s;
+        }
+        .schematic-btn:hover { border-color: var(--c-brand-light); color: var(--c-brand-light); letter-spacing: 1px; }
+
+        /* FEATURE 5: ROI SIMULATOR */
+        .roi-box {
+            background: rgba(2, 6, 23, 0.8); border: 1px solid rgba(255,255,255,0.1);
+            padding: 3rem; position: relative; overflow: hidden;
+        }
+        .roi-input {
+            background: transparent; border: none; border-bottom: 2px solid var(--c-brand-light);
+            color: #fff; font-size: 2rem; font-family: 'Outfit'; width: 150px; text-align: center;
+        }
+        .roi-input:focus { outline: none; }
+
+        /* FEATURE 6: VELOCITY CHART */
+        .velocity-bar {
+            height: 40px; background: rgba(255,255,255,0.05); margin-bottom: 1rem;
+            position: relative; border-radius: 4px; overflow: hidden;
+        }
+        .velocity-fill {
+            height: 100%; background: var(--c-brand-main); width: 0%;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex; align-items: center; padding-left: 1rem; font-family: 'JetBrains Mono'; font-size: 0.8rem; white-space: nowrap;
+        }
+        .velocity-fill.wix { background: var(--c-danger); width: 20%; } /* Simulate slow */
+        .velocity-fill.zyrova { background: var(--c-success); width: 98%; box-shadow: 0 0 20px var(--c-success); }
+
+        /* FEATURE 7: LIVE FEED */
+        .live-feed {
+            position: fixed; bottom: 2rem; right: 2rem; width: 300px;
+            background: rgba(0,0,0,0.9); border: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem; font-family: 'JetBrains Mono'; font-size: 0.7rem;
+            color: var(--c-success); z-index: 100; pointer-events: none;
+        }
+        .feed-item { margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* FEATURE 8: THE KILL SWITCH */
+        .kill-switch-container {
+            display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 2rem;
+        }
+        .hold-btn-large {
+            position: relative; padding: 2rem 6rem;
+            background: transparent; border: 1px solid var(--c-brand-light);
+            color: #fff; font-family: 'Outfit'; font-weight: 900; font-size: 2rem; letter-spacing: 4px;
+            cursor: pointer; overflow: hidden; user-select: none;
+        }
+        .hold-progress {
+            position: absolute; top: 0; left: 0; height: 100%; width: 0%;
+            background: var(--c-brand-light); mix-blend-mode: difference;
+            transition: width 0.1s linear; pointer-events: none;
+        }
+        .hold-btn-large:active .hold-progress { width: 100%; transition: width 2s ease-in; }
+
+        /* Canvas */
+        #singularity-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; pointer-events: none; }
+
         @media (max-width: 768px) {
-            .price-card-popular { transform: scale(1); }
+            .system-hud { display: none; }
+            .live-feed { display: none; }
+            .mega-price { font-size: 3.5rem; }
+            .prism-card { transform: none !important; margin-bottom: 2rem; }
+            .switch-opt { padding: 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
 
 <body>
 
+    <canvas id="singularity-canvas"></canvas>
+
+    <div class="system-hud">
+        <div class="hud-metric">
+            <div class="blink-red"></div>
+            <span style="margin-left: 8px;">SYSTEM: ONLINE</span>
+        </div>
+        <div class="hud-metric">
+            <span style="color: var(--text-tertiary);">CLIENTS:</span>
+            <span class="hud-value" id="hud-clients">50+</span>
+        </div>
+        <div class="hud-metric">
+            <span style="color: var(--text-tertiary);">UPTIME:</span>
+            <span class="hud-value">99.99%</span>
+        </div>
+        <div class="hud-metric">
+            <span style="color: var(--text-tertiary);">REGION:</span>
+            <span class="hud-value">GLOBAL</span>
+        </div>
+    </div>
+
+    <div class="live-feed" id="live-feed">
+        <div style="border-bottom: 1px solid var(--c-success); margin-bottom: 0.5rem; padding-bottom: 0.2rem;">// ACQUISITION LOG</div>
+        </div>
+
     <header class="header">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
-                </svg>
+            <a href="index.html" class="logo nav-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/></svg>
                 Zyrova
             </a>
-
             <nav>
                 <button class="nav-toggle" aria-label="Open Menu">☰</button>
                 <ul class="nav-menu">
@@ -96,172 +180,163 @@
                     <li><a href="case-studies.html" class="nav-link">Results</a></li>
                     <li><a href="pricing.html" class="nav-link" style="color:var(--c-brand-light)">Pricing</a></li>
                     <li><a href="about.html" class="nav-link">Agency</a></li>
-                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary">Login</a></li>
                 </ul>
             </nav>
-
             <a href="contact.html" class="btn btn-primary">Start Project</a>
         </div>
     </header>
 
     <main>
-        <section class="section text-center" style="padding-bottom: 2rem; padding-top: 150px;">
+        
+        <section class="section text-center" style="min-height: 70vh; display: flex; align-items: center; justify-content: center;">
             <div class="container">
                 <div class="reveal">
-                    <span class="badge mb-2">Transparent Pricing</span>
-                    <h1>Investment, not expense.</h1>
-                    <p class="mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">
-                        Stop renting your website. Get a custom digital asset you own 100%. 
-                        <br><strong class="text-accent">No monthly fees. No contracts.</strong>
+                    <div style="font-family: 'JetBrains Mono'; color: var(--c-success); margin-bottom: 1rem; letter-spacing: 5px; font-size: 0.8rem;">
+                        // SECURE VAULT ACCESS
+                    </div>
+                    <h1 style="font-size: clamp(3.5rem, 12vw, 8rem); line-height: 0.9; font-family: 'Outfit'; font-weight: 900; letter-spacing: -2px;">
+                        THE INFINITE <br> <span class="text-gradient">LEDGER.</span>
+                    </h1>
+                    <p style="max-width: 700px; margin: 2rem auto; color: var(--text-secondary); font-size: 1.2rem;">
+                        Most agencies rent you a website. We build you a <strong style="color:#fff">sovereign digital asset</strong>. 
+                        Pay once. Own the code. Own the data. Own the future.
                     </p>
-                </div>
-                
-                <div class="reveal delay-100 flex justify-center items-center gap-2 mb-4">
-                    <span style="font-weight: 600; color: var(--text-primary);">One-Time Payment</span>
-                    <div style="background: var(--c-brand-light); color: var(--c-brand-dark); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold;">YOU OWN IT</div>
                 </div>
             </div>
         </section>
+
+        <div class="container">
+            <div class="quantum-container reveal delay-100">
+                <div class="quantum-switch">
+                    <div class="switch-glider"></div>
+                    <div class="switch-opt active" onclick="switchMode('asset')">ASSET (One-Time)</div>
+                    <div class="switch-opt" onclick="switchMode('service')">SERVICE (Monthly)</div>
+                </div>
+            </div>
+        </div>
 
         <section class="section" style="padding-top: 0;">
             <div class="container">
-                <div class="grid-3 items-center" style="align-items: stretch;">
+                <div class="grid-3 prism-container">
                     
-                    <div class="glass-card reveal delay-100" style="border-top: 4px solid var(--text-secondary);">
-                        <h3 style="margin-bottom: 0.5rem;">Fast Launch</h3>
-                        <p style="font-size: 0.9rem;">Perfect for new local businesses.</p>
+                    <div class="prism-card reveal">
+                        <div style="font-family: 'JetBrains Mono'; color: var(--text-tertiary); font-size: 0.7rem; letter-spacing: 2px;">PROTOCOL: ALPHA</div>
+                        <h3 style="font-size: 2rem; margin: 0.5rem 0 2rem; color: #fff;">Fast Launch</h3>
                         
-                        <div style="margin: 1.5rem 0;">
-                            <span style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary);">$199</span>
-                            <span style="color: var(--text-tertiary);">/ one-time</span>
-                        </div>
-                        
-                        <a href="contact.html?plan=fast" class="btn btn-secondary w-full mb-4">Select Basic</a>
-                        
-                        <ul class="check-list">
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                One-Page High Speed Site
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Mobile Responsive Design
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Basic SEO Setup
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Contact Form Integration
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                7-Day Delivery
-                            </li>
+                        <div class="mega-price" id="price-basic">$199</div>
+                        <div class="mode-text" style="font-family: 'JetBrains Mono'; color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.5rem;">ONE-TIME PAYMENT</div>
+
+                        <ul style="margin-top: 3rem; list-style: none; padding: 0; color: var(--text-secondary); font-family: 'JetBrains Mono'; font-size: 0.85rem; margin-bottom: 2rem;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">[+] One-Page Architecture</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">[+] Mobile Responsive</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">[+] Basic SEO Injection</li>
                         </ul>
+
+                        <button class="schematic-btn" onclick="toggleSchematic(this)">
+                            <span>[+] VIEW TECH SPECS</span>
+                        </button>
+                        <div class="schematic-panel">
+                            <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.7rem;">CORE STACK:</div>
+                            <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom: 1rem;">
+                                <span style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px; font-size:0.6rem;">HTML5</span>
+                                <span style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px; font-size:0.6rem;">CSS3</span>
+                                <span style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px; font-size:0.6rem;">VANILLA JS</span>
+                            </div>
+                            <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.7rem;">SERVER:</div>
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary);">Netlify Global CDN // 99.9% Uptime</div>
+                        </div>
+
+                        <a href="contact.html?plan=fast" class="btn btn-secondary w-full" style="margin-top: 1rem;">INITIATE LAUNCH</a>
                     </div>
 
-                    <div class="glass-card price-card-popular reveal">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; background: var(--c-brand-light); color: var(--c-brand-dark); padding: 0.25rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Most Popular</div>
+                    <div class="prism-card reveal delay-100" style="border-color: rgba(14, 116, 144, 0.3);">
+                        <div style="position: absolute; top: 0; right: 0; background: var(--c-brand-main); color: #fff; font-family: 'JetBrains Mono'; font-size: 0.7rem; padding: 0.5rem 1rem; font-weight: 700;">RECOMMENDED</div>
+
+                        <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); font-size: 0.7rem; letter-spacing: 2px;">PROTOCOL: BETA</div>
+                        <h3 style="font-size: 2.5rem; margin: 0.5rem 0 2rem; color: #fff;">Growth Engine</h3>
                         
-                        <h3 style="margin-top: 1rem; margin-bottom: 0.5rem;">Growth Engine</h3>
-                        <p style="font-size: 0.9rem;">For businesses ready to scale.</p>
-                        
-                        <div style="margin: 1.5rem 0;">
-                            <span style="font-size: 3rem; font-weight: 800; color: var(--c-brand-light);">$349</span>
-                            <span style="color: var(--text-tertiary);">/ one-time</span>
-                        </div>
-                        
-                        <a href="contact.html?plan=growth" class="btn btn-primary w-full mb-4">Select Growth</a>
-                        
-                        <ul class="check-list">
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <strong>5-Page Custom Website</strong>
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <strong>Google Maps Optimization (GMB)</strong>
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Advanced "Near Me" SEO Schema
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Custom Booking System Integration
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Professional Copywriting Included
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                30-Days Priority Support
-                            </li>
+                        <div class="mega-price" id="price-growth" style="text-shadow: 0 0 30px rgba(103, 232, 249, 0.5);">$349</div>
+                        <div class="mode-text" style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); font-size: 0.8rem; margin-top: 0.5rem;">ONE-TIME PAYMENT</div>
+
+                        <ul style="margin-top: 3rem; list-style: none; padding: 0; color: #fff; font-family: 'JetBrains Mono'; font-size: 0.85rem; margin-bottom: 2rem;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(14, 116, 144, 0.2);">[+] 5-Page Custom Build</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(14, 116, 144, 0.2);">[+] Google Maps Domination</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(14, 116, 144, 0.2);">[+] Conversion Copywriting</li>
                         </ul>
+
+                        <button class="schematic-btn" onclick="toggleSchematic(this)" style="color: var(--c-brand-light); border-color: rgba(14, 116, 144, 0.3);">
+                            <span>[+] VIEW TECH SPECS</span>
+                        </button>
+                        <div class="schematic-panel">
+                            <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.7rem;">CORE STACK:</div>
+                            <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom: 1rem;">
+                                <span style="background:rgba(14, 116, 144, 0.2); padding:2px 5px; border-radius:3px; font-size:0.6rem;">REACT</span>
+                                <span style="background:rgba(14, 116, 144, 0.2); padding:2px 5px; border-radius:3px; font-size:0.6rem;">NEXT.JS</span>
+                                <span style="background:rgba(14, 116, 144, 0.2); padding:2px 5px; border-radius:3px; font-size:0.6rem;">TAILWIND</span>
+                            </div>
+                            <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.7rem;">INTEGRATIONS:</div>
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary);">Google Analytics 4 // Stripe // Calendly</div>
+                        </div>
+
+                        <a href="contact.html?plan=growth" class="btn btn-primary w-full" style="margin-top: 1rem;">DEPLOY ENGINE</a>
                     </div>
 
-                    <div class="glass-card reveal delay-200" style="border-top: 4px solid var(--c-accent-gold);">
-                        <h3 style="margin-bottom: 0.5rem;">Brand & Scale</h3>
-                        <p style="font-size: 0.9rem;">Multi-location or custom functionality.</p>
+                    <div class="prism-card reveal delay-200">
+                        <div style="font-family: 'JetBrains Mono'; color: var(--text-tertiary); font-size: 0.7rem; letter-spacing: 2px;">PROTOCOL: GAMMA</div>
+                        <h3 style="font-size: 2rem; margin: 0.5rem 0 2rem; color: #fff;">Brand & Scale</h3>
                         
-                        <div style="margin: 1.5rem 0;">
-                            <span style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary);">$499</span>
-                            <span style="color: var(--text-tertiary);">/ one-time</span>
-                        </div>
-                        
-                        <a href="contact.html?plan=custom" class="btn btn-secondary w-full mb-4">Select Premium</a>
-                        
-                        <ul class="check-list">
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Unlimited Pages
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Custom Web App Features
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Multi-Location SEO Strategy
-                            </li>
-                            <li>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                CRM / Patient Portal Integration
-                            </li>
+                        <div class="mega-price" id="price-scale">$499</div>
+                        <div class="mode-text" style="font-family: 'JetBrains Mono'; color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.5rem;">ONE-TIME PAYMENT</div>
+
+                        <ul style="margin-top: 3rem; list-style: none; padding: 0; color: var(--text-secondary); font-family: 'JetBrains Mono'; font-size: 0.85rem; margin-bottom: 2rem;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">[+] Unlimited Page Arch</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">[+] Custom Web App Logic</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">[+] Multi-Location SEO</li>
                         </ul>
+
+                        <button class="schematic-btn" onclick="toggleSchematic(this)">
+                            <span>[+] VIEW TECH SPECS</span>
+                        </button>
+                        <div class="schematic-panel">
+                            <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.7rem;">CORE STACK:</div>
+                            <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom: 1rem;">
+                                <span style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px; font-size:0.6rem;">WEBGL</span>
+                                <span style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px; font-size:0.6rem;">THREE.JS</span>
+                                <span style="background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:3px; font-size:0.6rem;">POSTGRES</span>
+                            </div>
+                            <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.7rem;">BACKEND:</div>
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary);">Headless CMS (Sanity.io) // Vercel Edge Functions</div>
+                        </div>
+
+                        <a href="contact.html?plan=custom" class="btn btn-secondary w-full" style="margin-top: 1rem;">INITIATE SCALE</a>
                     </div>
 
-                </div>
-                
-                <div class="text-center mt-4 reveal delay-300">
-                    <p style="font-size: 0.9rem; color: var(--text-tertiary);">
-                        Need a custom quote? <a href="contact.html" class="text-accent">Contact us directly</a>.
-                    </p>
                 </div>
             </div>
         </section>
 
-        <section class="section" style="background: linear-gradient(to right, rgba(14, 116, 144, 0.05), transparent);">
-            <div class="container grid-2 items-center">
-                <div class="reveal">
-                    <h3>Peace of Mind Maintenance</h3>
-                    <p>While you don't <em>need</em> monthly maintenance (our sites are static and unbreakable), many clients prefer to have us on speed dial for content updates, blogs, and new offers.</p>
-                </div>
-                <div class="glass-card reveal delay-100 flex items-center justify-between">
-                    <div>
-                        <div style="font-weight: 700; font-size: 1.25rem;">Optional Monthly Support</div>
-                        <ul style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-secondary); list-style: none;">
-                            <li>✓ Unlimited Content Edits</li>
-                            <li>✓ Monthly Performance Report</li>
-                            <li>✓ 24/7 Uptime Monitoring</li>
-                        </ul>
-                    </div>
-                    <div style="text-align: right;">
-                        <div style="font-size: 2rem; font-weight: 800; color: var(--c-brand-light);">$49</div>
-                        <div style="font-size: 0.8rem; color: var(--text-tertiary);">/ month</div>
+        <section class="section">
+            <div class="container">
+                <div class="roi-box reveal">
+                    <div class="grid-2">
+                        <div>
+                            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Calculate Your ROI</h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                                Enter your average deal value to see how much revenue <strong>one</strong> extra lead per month generates.
+                            </p>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <span style="font-size: 1.5rem; color: var(--text-tertiary);">$</span>
+                                <input type="number" class="roi-input" value="500" id="deal-value" oninput="calculateROI()">
+                                <span style="font-size: 1rem; color: var(--text-tertiary);">AVG. DEAL VALUE</span>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-tertiary);">ANNUAL REVENUE INCREASE</div>
+                            <div style="font-family: 'Outfit'; font-weight: 900; font-size: 4rem; color: var(--c-success);" id="annual-revenue">+$6,000</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Based on just 1 extra sale/month</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -269,53 +344,40 @@
 
         <section class="section">
             <div class="container" style="max-width: 800px;">
-                <h2 class="text-center mb-4 reveal">Frequently Asked Questions</h2>
-                
-                <div class="reveal delay-100">
-                    <details>
-                        <summary>Why do you charge one-time instead of monthly?</summary>
-                        <div class="faq-answer">
-                            We believe you should own your business assets. When you pay monthly for Wix or an agency retainer, you are renting. If you stop paying, your site disappears. With Zyrova, once the invoice is paid, you own the code, the domain, and the design forever.
-                        </div>
-                    </details>
-                    
-                    <details>
-                        <summary>How long does it take to launch?</summary>
-                        <div class="faq-answer">
-                            Our "Fast Launch" package typically goes live in 7 days. The "Growth Engine" takes about 2-3 weeks depending on how quickly we receive your photos and content.
-                        </div>
-                    </details>
-                    
-                    <details>
-                        <summary>Will I be able to edit the website myself?</summary>
-                        <div class="faq-answer">
-                            Yes. We can set up a headless CMS (Content Management System) that allows you to edit text, change prices, and swap photos easily without touching any code.
-                        </div>
-                    </details>
-                    
-                    <details>
-                        <summary>What about hosting and domain fees?</summary>
-                        <div class="faq-answer">
-                            We recommend Netlify or Vercel for hosting, which are often free for small business sites, or very low cost ($0-$20/mo). Domain names (yourname.com) cost about $12/year, which you pay directly to the registrar.
-                        </div>
-                    </details>
-
-                    <details>
-                        <summary>Do you write the text/copy?</summary>
-                        <div class="faq-answer">
-                            Yes! Our "Growth Engine" package includes professional copywriting optimized for conversion. For the "Fast Launch" package, we provide templates for you to fill out.
-                        </div>
-                    </details>
+                <div class="reveal mb-4 text-center">
+                    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--text-tertiary);">// PERFORMANCE METRICS</h2>
                 </div>
-
+                
+                <div class="reveal delay-100" style="background: rgba(0,0,0,0.5); padding: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.9rem;">WORDPRESS / WIX (BLOATED)</div>
+                    <div class="velocity-bar">
+                        <div class="velocity-fill wix">35/100 SPEED SCORE</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 0.5rem; color: #fff; font-size: 0.9rem; margin-top: 2rem;">ZYROVA (PURE CODE)</div>
+                    <div class="velocity-bar">
+                        <div class="velocity-fill zyrova">100/100 PERFECT SCORE</div>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-tertiary); font-size: 0.8rem;">
+                        Google penalizes slow sites. We engineer speed.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section class="section text-center">
+        <section class="section text-center" style="padding: 10rem 0;">
             <div class="container">
-                <h2 class="reveal">Ready to build your digital asset?</h2>
-                <div class="reveal delay-100" style="margin-top: 2rem;">
-                    <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+                <div class="kill-switch-container reveal">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to execute?</h2>
+                    <p style="color: var(--text-secondary); max-width: 500px; margin-bottom: 2rem;">
+                        Initiate the sequence. Our team will deploy your digital infrastructure within 7 days.
+                    </p>
+                    
+                    <button class="hold-btn-large" onmousedown="startKill(this)" onmouseup="endKill(this)" onmouseleave="endKill(this)" ontouchstart="startKill(this)" ontouchend="endKill(this)">
+                        <div class="hold-progress"></div>
+                        <span style="position: relative; z-index: 2;">HOLD TO CONFIRM</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -323,60 +385,149 @@
     </main>
 
     <footer class="footer">
-        <div class="footer-bg-text">ZYROVA</div>
-        
-        <div class="container footer-grid">
-            <div>
-                <a href="#" class="logo" style="margin-bottom: 2rem;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
-                    </svg>
-                    Zyrova
-                </a>
-                <p>
-                    HQ: Austin, Texas<br>
-                    Global Operations
-                </p>
-                <div class="flex gap-1">
-                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">𝕏</a>
-                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">in</a>
-                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">IG</a>
-                </div>
-            </div>
-
-            <div>
-                <div class="footer-heading">Services</div>
-                <a href="services.html" class="footer-link">Web Development</a>
-                <a href="services.html" class="footer-link">Local SEO</a>
-                <a href="services.html" class="footer-link">Paid Ads</a>
-                <a href="services.html" class="footer-link">Copywriting</a>
-            </div>
-
-            <div>
-                <div class="footer-heading">Company</div>
-                <a href="about.html" class="footer-link">About Us</a>
-                <a href="case-studies.html" class="footer-link">Case Studies</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="contact.html" class="footer-link">Contact</a>
-            </div>
-
-            <div>
-                <div class="footer-heading">Legal</div>
-                <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                <a href="terms.html" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Sitemap</a>
-            </div>
-        </div>
-
-        <div class="container copyright">
-            <div class="copyright-left">
-                &copy; 2026 Zyrova Digital. All rights reserved.
-            </div>
-            
-            <a href="about.html" class="owner-signature">Designed by Akash Jadon</a>
+        <div class="container text-center" style="padding: 4rem 0;">
+            <p style="color: var(--text-tertiary); font-size: 0.8rem; font-family: 'JetBrains Mono';">
+                ZYROVA DIGITAL // INFINITE LEDGER // EST 2026
+            </p>
         </div>
     </footer>
 
+    <script src="script.js"></script>
+    
+    <script>
+        // 1. PHYSICS CANVAS
+        const canvas = document.getElementById('singularity-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        function initPhysics() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            const count = window.innerWidth < 768 ? 30 : 80;
+            for(let i=0; i<count; i++) {
+                particles.push({
+                    x: Math.random() * width, y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2, color: `rgba(14, 116, 144, ${Math.random() * 0.5})`
+                });
+            }
+        }
+
+        function drawPhysics() {
+            ctx.clearRect(0, 0, width, height);
+            for(let i=0; i<particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx; p.y += p.vy;
+                if(p.x < 0 || p.x > width) p.vx *= -1;
+                if(p.y < 0 || p.y > height) p.vy *= -1;
+                
+                let d = Math.hypot(mouse.x - p.x, mouse.y - p.y);
+                if(d < 150) { p.x -= (mouse.x - p.x) * 0.02; p.y -= (mouse.y - p.y) * 0.02; }
+
+                ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                for(let j=i; j<particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if(dist < 100) {
+                        ctx.strokeStyle = `rgba(14, 116, 144, ${1 - dist/100})`;
+                        ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawPhysics);
+        }
+        window.addEventListener('resize', initPhysics);
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        initPhysics(); drawPhysics();
+
+        // 2. QUANTUM SWITCH LOGIC
+        const glider = document.querySelector('.switch-glider');
+        const opts = document.querySelectorAll('.switch-opt');
+        const prices = {
+            basic: { asset: '$199', service: '$49' },
+            growth: { asset: '$349', service: '$149' },
+            scale: { asset: '$499', service: '$299' }
+        };
+
+        function switchMode(mode) {
+            glider.style.transform = mode === 'asset' ? 'translateX(0%)' : 'translateX(100%)';
+            opts[0].classList.toggle('active', mode === 'asset');
+            opts[1].classList.toggle('active', mode === 'service');
+            document.getElementById('price-basic').innerText = prices.basic[mode];
+            document.getElementById('price-growth').innerText = prices.growth[mode];
+            document.getElementById('price-scale').innerText = prices.scale[mode];
+            document.querySelectorAll('.mode-text').forEach(el => {
+                el.innerText = mode === 'asset' ? 'ONE-TIME PAYMENT' : 'MONTHLY RETAINER';
+            });
+        }
+
+        // 3. SCHEMATIC TOGGLE
+        function toggleSchematic(btn) {
+            const card = btn.closest('.prism-card');
+            card.classList.toggle('open');
+            const span = btn.querySelector('span');
+            span.innerText = card.classList.contains('open') ? '[-] CLOSE TECH SPECS' : '[+] VIEW TECH SPECS';
+        }
+
+        // 4. LIVE FEED LOGIC
+        const feedContainer = document.getElementById('live-feed');
+        const cities = ['New York', 'London', 'Austin', 'Berlin', 'Tokyo', 'Toronto'];
+        const items = ['Growth Engine', 'Protocol Alpha', 'Brand Scale', 'Security Patch'];
+        function addFeedItem() {
+            const city = cities[Math.floor(Math.random() * cities.length)];
+            const item = items[Math.floor(Math.random() * items.length)];
+            const div = document.createElement('div');
+            div.className = 'feed-item';
+            div.innerHTML = `[${new Date().toLocaleTimeString()}] <strong>${city}</strong> acquired <span>${item}</span>`;
+            feedContainer.prepend(div);
+            if(feedContainer.children.length > 4) feedContainer.lastChild.remove();
+            setTimeout(addFeedItem, Math.random() * 3000 + 2000);
+        }
+        setTimeout(addFeedItem, 1000);
+
+        // 5. ROI CALCULATOR
+        function calculateROI() {
+            const dealValue = parseFloat(document.getElementById('deal-value').value) || 0;
+            const annual = dealValue * 12;
+            document.getElementById('annual-revenue').innerText = '+$' + annual.toLocaleString();
+        }
+
+        // 6. KILL SWITCH (HOLD TO REDIRECT)
+        let killTimer;
+        function startKill(btn) {
+            const progress = btn.querySelector('.hold-progress');
+            progress.style.transition = 'width 2s linear';
+            progress.style.width = '100%';
+            killTimer = setTimeout(() => { window.location.href = 'contact.html'; }, 2000);
+        }
+        function endKill(btn) {
+            clearTimeout(killTimer);
+            const progress = btn.querySelector('.hold-progress');
+            progress.style.transition = 'width 0.2s ease-out';
+            progress.style.width = '0%';
+        }
+
+        // 7. 3D TILT LOGIC (PRISMS)
+        document.querySelectorAll('.prism-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotateX = ((y - rect.height/2) / rect.height) * -5;
+                const rotateY = ((x - rect.width/2) / rect.width) * 5;
+                card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(2000px) rotateX(0) rotateY(0) scale(1)`;
+            });
+        });
+    </script>
+</body>
+</html>
+
     <script src="script.js" defer></script>
 </body>
+
 </html>
