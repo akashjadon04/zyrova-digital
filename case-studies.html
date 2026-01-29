@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Client Results & Case Studies | Zyrova Digital</title>
+    <meta name="description" content="See how Zyrova helps local businesses double their leads. Real results, real data, no fluff. Budgets from $400 - $900.">
+    <meta name="theme-color" content="#020617">
+    <link rel="canonical" href="https://zyrova.com/case-studies">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Premium Case Study Specifics */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glass);
+        }
+        .stat-item h4 {
+            font-size: 1.5rem;
+            color: var(--c-success);
+            margin-bottom: 0.25rem;
+            font-weight: 800;
+        }
+        .stat-item p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0;
+            color: var(--text-tertiary);
+        }
+        
+        .industry-tag {
+            background: rgba(14, 116, 144, 0.1);
+            color: var(--c-brand-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(14, 116, 144, 0.3);
+        }
+
+        .budget-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(16, 185, 129, 0.9);
+            color: #020617;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Image Container */
+        .case-img-container {
+            height: 220px;
+            width: 100%;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+        }
+        
+        .case-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .case-img {
+            transform: scale(1.05);
+        }
+        
+        /* Dark overlay gradient on images */
+        .case-img-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                </svg>
+                Zyrova
+            </a>
+
+            <nav>
+                <button class="nav-toggle" aria-label="Open Menu">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="case-studies.html" class="nav-link" style="color:var(--c-brand-light)">Results</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                    <li><a href="about.html" class="nav-link">Agency</a></li>
+                    <li><a href="contact.html" class="nav-link" style="color:var(--c-brand-light)">Contact</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact.html" class="btn btn-primary">Start Project</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="section text-center" style="padding-bottom: 4rem; padding-top: 150px;">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge mb-2">Proven Track Record</span>
+                    <h1>Results, not <span class="text-gradient">excuses.</span></h1>
+                    <p style="margin: 0 auto; max-width: 700px;">
+                        We don't just build pretty websites. We build revenue engines. <br>
+                        Here are 6 businesses we scaled using our proprietary "God Mode" framework.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                
+                <div class="grid-3">
+                    
+                    <div class="card reveal glass-card">
+                        <div class="budget-badge">$850 Project</div>
+                        <div class="case-img-container">
+                            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Dental Clinic" class="case-img">
+                        </div>
+                        <div class="industry-tag">Healthcare / Dental</div>
+                        <h3>Apex Dental Studio</h3>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Problem:</strong> 5-year-old WordPress site taking 8s to load. No Google Maps ranking.
+                        </p>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Solution:</strong> Rebuilt in raw HTML5. Added "Emergency Booking" funnel.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-item"><h4>+214%</h4><p>Calls</p></div>
+                            <div class="stat-item"><h4>#1</h4><p>On Maps</p></div>
+                            <div class="stat-item"><h4>0.4s</h4><p>Load</p></div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-100 glass-card">
+                        <div class="budget-badge">$600 Project</div>
+                        <div class="case-img-container">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="High End Gym" class="case-img">
+                        </div>
+                        <div class="industry-tag" style="color: #fca5a5; background: rgba(185, 28, 28, 0.1); border-color: rgba(185, 28, 28, 0.3);">Fitness / Gym</div>
+                        <h3>Ironclad Fitness</h3>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Problem:</strong> Losing members to franchise gyms. Website looked outdated on mobile.
+                        </p>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Solution:</strong> High-energy dark mode design. "Free Pass" lead capture popup.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-item"><h4>+45</h4><p>Signups</p></div>
+                            <div class="stat-item"><h4>3x</h4><p>Traffic</p></div>
+                            <div class="stat-item"><h4>100%</h4><p>Mobile</p></div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-200 glass-card">
+                        <div class="budget-badge">$900 Project</div>
+                        <div class="case-img-container">
+                            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Law Firm Office" class="case-img">
+                        </div>
+                        <div class="industry-tag" style="color: #a78bfa; background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.3);">Legal / Finance</div>
+                        <h3>Vanguard Partners</h3>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Problem:</strong> High ad spend, low conversions. Clients couldn't find "Contact" button.
+                        </p>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Solution:</strong> Professional "Trust" layout. Sticky call button. Speed optimization.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-item"><h4>-40%</h4><p>Ad Cost</p></div>
+                            <div class="stat-item"><h4>5x</h4><p>Leads</p></div>
+                            <div class="stat-item"><h4>A+</h4><p>Speed</p></div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal glass-card">
+                        <div class="budget-badge">$450 Project</div>
+                        <div class="case-img-container">
+                            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Coffee Shop" class="case-img">
+                        </div>
+                        <div class="industry-tag" style="color: #fdba74; background: rgba(234, 88, 12, 0.1); border-color: rgba(234, 88, 12, 0.3);">Hospitality</div>
+                        <h3>Bean & Brew Co.</h3>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Problem:</strong> Invisible to tourists. Menu was a blurry PDF that didn't load.
+                        </p>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Solution:</strong> HTML Menu (Google readable). SEO for "Best Coffee Near Me".
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-item"><h4>+150%</h4><p>Foot Traffic</p></div>
+                            <div class="stat-item"><h4>#1</h4><p>Local SEO</p></div>
+                            <div class="stat-item"><h4>Fast</h4><p>Menu</p></div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-100 glass-card">
+                        <div class="budget-badge">$750 Project</div>
+                        <div class="case-img-container">
+                            <img src="https://images.unsplash.com/photo-1581094794329-cd2a1fb0e538?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="HVAC Technician" class="case-img">
+                        </div>
+                        <div class="industry-tag" style="color: #7dd3fc; background: rgba(14, 165, 233, 0.1); border-color: rgba(14, 165, 233, 0.3);">Home Services</div>
+                        <h3>Summit HVAC</h3>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Problem:</strong> Reliant on word-of-mouth. Zero online presence.
+                        </p>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Solution:</strong> "Quote Calculator" built-in. Trust badges and reviews front-and-center.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-item"><h4>$12k</h4><p>New Rev</p></div>
+                            <div class="stat-item"><h4>24/7</h4><p>Booking</p></div>
+                            <div class="stat-item"><h4>Top 3</h4><p>Google</p></div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-200 glass-card">
+                        <div class="budget-badge">$500 Project</div>
+                        <div class="case-img-container">
+                            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Spa Aesthetics" class="case-img">
+                        </div>
+                        <div class="industry-tag" style="color: #f9a8d4; background: rgba(219, 39, 119, 0.1); border-color: rgba(219, 39, 119, 0.3);">Beauty / Spa</div>
+                        <h3>Lumina Aesthetics</h3>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Problem:</strong> Instagram was their only "website." Hard to book appointments.
+                        </p>
+                        <p style="font-size: 0.9rem;">
+                            <strong>Solution:</strong> Aesthetic minimal portfolio. Instagram feed integration.
+                        </p>
+                        <div class="stat-grid">
+                            <div class="stat-item"><h4>Full</h4><p>Bookings</p></div>
+                            <div class="stat-item"><h4>2x</h4><p>Prices</p></div>
+                            <div class="stat-item"><h4>Elite</h4><p>Brand</p></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section text-center">
+            <div class="container">
+                <h2 class="reveal">We want to make YOU our next case study.</h2>
+                <p class="reveal delay-100">Join the top 1% of local businesses dominating their market.</p>
+                <div class="reveal delay-200" style="margin-top: 2rem;">
+                    <a href="contact.html" class="btn btn-primary">Start Your Transformation</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bg-text">ZYROVA</div>
+        
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 2rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                    </svg>
+                    Zyrova
+                </a>
+                <p>
+                    HQ: Austin, Texas<br>
+                    Global Operations
+                </p>
+                <div class="flex gap-1">
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">𝕏</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">in</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">IG</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-heading">Services</div>
+                <a href="services.html" class="footer-link">Web Development</a>
+                <a href="services.html" class="footer-link">Local SEO</a>
+                <a href="services.html" class="footer-link">Paid Ads</a>
+                <a href="services.html" class="footer-link">Copywriting</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Company</div>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="case-studies.html" class="footer-link">Case Studies</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Legal</div>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Sitemap</a>
+            </div>
+        </div>
+
+        <div class="container copyright">
+            <div class="copyright-left">
+                &copy; 2026 Zyrova Digital. All rights reserved.
+            </div>
+            
+            <a href="about.html" class="owner-signature">Designed by Akash Jadon</a>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

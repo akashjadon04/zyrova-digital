@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Zyrova // TITAN PROTOCOL</title>
+    <meta name="description" content="Authorized Personnel Only. Join the elite unit building the digital future.">
+    <meta name="theme-color" content="#020617">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- TITAN PROTOCOL STYLES --- */
+        
+        /* 1. SYSTEM BOOT LOADER */
+        #boot-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #020617; z-index: 99999;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column;
+            font-family: 'JetBrains Mono'; color: var(--c-brand-light);
+            animation: fadeOut 0.5s ease-in-out 4s forwards;
+            pointer-events: none;
+        }
+        .boot-bar { width: 300px; height: 2px; background: rgba(255,255,255,0.1); margin-top: 1rem; position: relative; overflow: hidden; }
+        .boot-progress { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--c-success); animation: load 3.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        @keyframes load { 0% { width: 0%; } 100% { width: 100%; } }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+        /* 2. THE ARMORY (PERKS) */
+        .armory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); }
+        .perk-box { background: var(--bg-body); padding: 4rem 3rem; position: relative; transition: all 0.3s; }
+        .perk-box:hover { background: rgba(14, 116, 144, 0.05); z-index: 10; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        .perk-icon { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--c-brand-light); }
+        
+        /* 3. NEW: EXTRACTION PROTOCOL (TIMELINE) */
+        .timeline-step { position: relative; padding-left: 3rem; margin-bottom: 4rem; border-left: 2px solid rgba(255,255,255,0.1); }
+        .timeline-step:last-child { border-left: 2px solid transparent; }
+        .step-dot { 
+            position: absolute; left: -9px; top: 0; width: 16px; height: 16px; 
+            background: #020617; border: 2px solid var(--c-brand-light); border-radius: 50%; 
+            transition: all 0.3s;
+        }
+        .timeline-step:hover .step-dot { background: var(--c-brand-light); box-shadow: 0 0 15px var(--c-brand-light); }
+        
+        /* 4. NEW: GLOBAL INTEL (MAP) */
+        .map-grid {
+            position: relative; height: 400px; width: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .map-node {
+            position: absolute; width: 8px; height: 8px; background: var(--c-success); border-radius: 50%;
+            box-shadow: 0 0 10px var(--c-success); animation: pulse-node 2s infinite;
+        }
+        @keyframes pulse-node { 0% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.5); } 100% { opacity: 0.5; transform: scale(1); } }
+
+        /* 5. NEW: TRANSMISSIONS (TESTIMONIALS) */
+        .transmission-card {
+            background: rgba(2, 6, 23, 0.8); border: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem; position: relative;
+        }
+        .transmission-card::before { content: '"'; position: absolute; top: 1rem; left: 1rem; font-family: 'Outfit'; font-size: 4rem; color: rgba(255,255,255,0.05); line-height: 1; }
+
+        /* 6. NEW: TACTICAL DEBRIEF (FAQ) */
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .faq-question {
+            width: 100%; text-align: left; background: none; border: none; padding: 2rem 0;
+            color: #fff; font-family: 'Outfit'; font-size: 1.25rem; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+            color: var(--text-secondary); font-size: 1rem; padding-bottom: 0;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 2rem; }
+        .faq-icon { transition: transform 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); color: var(--c-brand-light); }
+
+        /* 7. SYSTEM LOG */
+        .system-log {
+            position: fixed; bottom: 20px; left: 20px; width: 300px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-tertiary); pointer-events: none; z-index: 50; display: flex; flex-direction: column-reverse; gap: 5px; mask-image: linear-gradient(to bottom, transparent, black); height: 150px; overflow: hidden;
+        }
+        .log-entry { animation: slideIn 0.3s ease-out; }
+        .log-entry span { color: var(--c-success); }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* 8. NEW: SECURE UPLINK FORM (PREMIUM) */
+        .uplink-form-container {
+            background: rgba(10, 15, 30, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Glowing Corner Accents */
+        .uplink-form-container::after {
+            content: ''; position: absolute; bottom: 0; right: 0; width: 30px; height: 30px;
+            border-bottom: 2px solid var(--c-brand-light);
+            border-right: 2px solid var(--c-brand-light);
+        }
+        
+        .titan-input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .titan-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 1.25rem 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0; /* Strict Tactical Look */
+        }
+        
+        .titan-input:focus {
+            outline: none;
+            border-color: var(--c-brand-light);
+            background: rgba(14, 116, 144, 0.05);
+            box-shadow: 0 0 20px rgba(103, 232, 249, 0.1);
+        }
+        
+        .titan-label {
+            position: absolute;
+            left: 1rem; top: 1.25rem;
+            color: var(--text-tertiary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .titan-input:focus ~ .titan-label,
+        .titan-input:not(:placeholder-shown) ~ .titan-label {
+            top: -0.6rem;
+            left: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--c-brand-light);
+            background: #020617;
+            padding: 0 0.5rem;
+        }
+
+        .submit-breach-btn {
+            width: 100%;
+            background: var(--c-brand-main);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-breach-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 30px var(--c-brand-light);
+        }
+
+        /* BASE OVERRIDES */
+        .hero-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 10; overflow: hidden; }
+        .void-text { font-size: clamp(4rem, 15vw, 12rem); line-height: 0.85; text-align: center; letter-spacing: -0.05em; opacity: 0.9; }
+        .manifesto-line { font-size: clamp(1.5rem, 3vw, 3rem); line-height: 1.4; color: var(--text-secondary); border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem; margin-bottom: 2rem; transition: all 0.3s; }
+        .manifesto-line:hover { border-left-color: var(--c-brand-light); color: #fff; padding-left: 3rem; background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent); }
+        .data-plate { background: rgba(2, 6, 23, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); padding: 4rem 3rem; position: relative; overflow: hidden; transition: all 0.1s; margin-bottom: 2px; }
+        .data-plate::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0%; background: var(--c-success); transition: height 0.5s; }
+        .data-plate:hover::before { height: 100%; }
+
+        @media (max-width: 768px) { .system-log { display: none; } .void-text { font-size: 4rem; } .data-plate { padding: 2rem; } .armory-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+
+<body>
+
+    <div id="boot-screen">
+        <div style="margin-bottom: 10px;">INITIALIZING ZYROVA CORE...</div>
+        <div class="boot-bar"><div class="boot-progress"></div></div>
+        <div style="font-size: 0.7rem; color: #64748b; margin-top: 10px;">Loading Titan Protocol... 100%</div>
+    </div>
+
+    <div class="system-log" id="sys-log"></div>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo nav-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/></svg>
+                Zyrova
+            </a>
+            <nav>
+                <button class="nav-toggle" aria-label="Open Menu">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="case-studies.html" class="nav-link">Results</a></li>
+                    <li><a href="about.html" class="nav-link">Agency</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary">Login</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn btn-primary">Start Project</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="hero-section">
+            <div class="container text-center">
+                <div class="reveal delay-100">
+                    <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); margin-bottom: 2rem; letter-spacing: 0.5rem; opacity: 0.8;">
+                        // PROTOCOL V8: TITAN
+                    </div>
+                    
+                    <h1 class="void-text glitch-hover" data-text="TOTAL DOMINANCE">
+                        TOTAL<br><span style="color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.5);">DOMINANCE</span>
+                    </h1>
+                    
+                    <div style="margin-top: 4rem; display: flex; justify-content: center;">
+                        <div class="hud-line" style="height: 80px; width: 1px; background: rgba(255,255,255,0.2); animation: scan-vertical 2s infinite;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container" style="max-width: 900px;">
+                <div class="reveal">
+                    <h2 style="margin-bottom: 4rem; font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--c-success);">// THE CODE OF CONDUCT</h2>
+                    
+                    <div class="manifesto-line glitch-hover" data-text="We do not build websites. We build empires.">
+                        We do not build websites. We build empires.
+                    </div>
+                    <div class="manifesto-line glitch-hover" data-text="Speed is our currency. Perfection is our standard.">
+                        Speed is our currency. Perfection is our standard.
+                    </div>
+                    <div class="manifesto-line glitch-hover" data-text="Zero politics. Absolute ownership.">
+                        Zero politics. Absolute ownership.
+                    </div>
+                    <div class="manifesto-line glitch-hover" data-text="We recruit mercenaries, not employees.">
+                        We recruit mercenaries, not employees.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding: 0;">
+            <div class="container">
+                <div class="reveal mb-4">
+                    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--c-brand-light);">// THE ARMORY (BENEFITS)</h2>
+                </div>
+                
+                <div class="armory-grid reveal delay-100">
+                    <div class="perk-box role-card">
+                        <div style="position: absolute; top: 1rem; right: 1rem; font-family: 'JetBrains Mono'; opacity: 0.3;">01</div>
+                        <div class="perk-icon">🌍</div>
+                        <h3>Global Command</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">100% Remote. Work from Tokyo, NYC, or a bunker. We focus on output, not location.</p>
+                    </div>
+                    <div class="perk-box role-card">
+                        <div style="position: absolute; top: 1rem; right: 1rem; font-family: 'JetBrains Mono'; opacity: 0.3;">02</div>
+                        <div class="perk-icon">💰</div>
+                        <h3>Mercenary Pay</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Top 1% market rates. Uncapped performance bonuses for killers who deliver results.</p>
+                    </div>
+                    <div class="perk-box role-card">
+                        <div style="position: absolute; top: 1rem; right: 1rem; font-family: 'JetBrains Mono'; opacity: 0.3;">03</div>
+                        <div class="perk-icon">⚡</div>
+                        <h3>Deep Work</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">No meetings about meetings. Just pure, unadulterated flow state and execution.</p>
+                    </div>
+                    <div class="perk-box role-card">
+                        <div style="position: absolute; top: 1rem; right: 1rem; font-family: 'JetBrains Mono'; opacity: 0.3;">04</div>
+                        <div class="perk-icon">🛠</div>
+                        <h3>Best Gear</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">$5k setup stipend. MacBook M3 Max, 4K displays, ergonomic chairs—whatever you need.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="padding: 4rem 0; overflow: hidden; background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); margin: 6rem 0;">
+            <div class="tech-track" style="font-size: 3rem; font-weight: 900; color: rgba(255,255,255,0.05);">
+                <span>THREE.JS</span> <span>///</span>
+                <span>WEBGL</span> <span>///</span>
+                <span>REACT</span> <span>///</span>
+                <span>NEXT.JS</span> <span>///</span>
+                <span>GSAP</span> <span>///</span>
+                <span>BLENDER</span> <span>///</span>
+                <span>FIGMA</span> <span>///</span>
+                <span>THREE.JS</span> <span>///</span>
+                <span>WEBGL</span> <span>///</span>
+                <span>REACT</span> <span>///</span>
+                <span>NEXT.JS</span> <span>///</span>
+                <span>GSAP</span> <span>///</span>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container" style="max-width: 800px;">
+                <div class="reveal mb-4">
+                    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--c-success);">// EXTRACTION PROTOCOL (PROCESS)</h2>
+                </div>
+                
+                <div class="reveal delay-100">
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <h3 style="margin-bottom: 0.5rem; color: #fff;">01 // Reconnaissance</h3>
+                        <p style="color: var(--text-secondary);">You submit your dossier (portfolio). We analyze your code quality and design eye.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <h3 style="margin-bottom: 0.5rem; color: #fff;">02 // Tactical Briefing</h3>
+                        <p style="color: var(--text-secondary);">A 30-minute call with the Founder. No HR fluff. Pure technical and cultural alignment.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <h3 style="margin-bottom: 0.5rem; color: #fff;">03 // Live Ops</h3>
+                        <p style="color: var(--text-secondary);">A paid, real-world task. Show us how you solve problems under pressure.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--c-brand-light);">04 // Deployment</h3>
+                        <p style="color: var(--text-secondary);">Offer made. Gear shipped. Access granted. Welcome to the unit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="roles">
+            <div class="container">
+                <div class="flex justify-between items-end mb-4 reveal" style="padding-bottom: 2rem;">
+                    <h2 class="glitch-hover" data-text="Active Operations" style="font-size: 3rem; margin: 0; line-height: 1;">Active Operations</h2>
+                    <span style="font-family: 'JetBrains Mono'; color: var(--c-success);">● LIVE FEED</span>
+                </div>
+
+                <a href="#uplink" style="text-decoration: none; color: inherit;">
+                    <div class="data-plate role-card reveal">
+                        <div style="position: absolute; top: 2rem; right: 2rem; font-family: 'JetBrains Mono'; color: var(--c-brand-light); font-size: 0.8rem;">PRIORITY: ALPHA</div>
+                        <h3 class="glitch-hover" data-text="Creative Developer">Creative Developer</h3>
+                        <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); margin-bottom: 2rem;">WEBGL // THREE.JS</div>
+                        <p style="max-width: 600px; color: var(--text-secondary); font-size: 1.1rem;">You simulate reality in the browser. You will build the physics engines and 3D interactions that define our brand.</p>
+                    </div>
+                </a>
+
+                <a href="#uplink" style="text-decoration: none; color: inherit;">
+                    <div class="data-plate role-card reveal delay-100">
+                        <div style="position: absolute; top: 2rem; right: 2rem; font-family: 'JetBrains Mono'; color: var(--c-brand-light); font-size: 0.8rem;">PRIORITY: BETA</div>
+                        <h3 class="glitch-hover" data-text="Visual Architect">Visual Architect</h3>
+                        <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); margin-bottom: 2rem;">FIGMA // MOTION</div>
+                        <p style="max-width: 600px; color: var(--text-secondary); font-size: 1.1rem;">You obsess over glassmorphism, kinetic typography, and dark mode aesthetics.</p>
+                    </div>
+                </a>
+
+                <a href="#uplink" style="text-decoration: none; color: inherit;">
+                    <div class="data-plate role-card reveal delay-200">
+                        <div style="position: absolute; top: 2rem; right: 2rem; font-family: 'JetBrains Mono'; color: var(--c-brand-light); font-size: 0.8rem;">PRIORITY: GAMMA</div>
+                        <h3 class="glitch-hover" data-text="Growth Killer">Growth Killer</h3>
+                        <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); margin-bottom: 2rem;">ADS // SCALE</div>
+                        <p style="max-width: 600px; color: var(--text-secondary); font-size: 1.1rem;">You eat ROAS for breakfast. Manage high-budget campaigns and dominate local markets.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="reveal mb-4 text-center">
+                    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--text-tertiary);">// GLOBAL INTEL</h2>
+                </div>
+                <div class="map-grid reveal">
+                    <div class="map-node" style="top: 30%; left: 25%;"></div>
+                    <div class="map-node" style="top: 45%; left: 48%; animation-delay: 0.5s;"></div>
+                    <div class="map-node" style="top: 35%; left: 75%; animation-delay: 1s;"></div>
+                    <div class="map-node" style="top: 60%; left: 80%; animation-delay: 1.5s;"></div>
+                    <div style="position: absolute; font-family: 'JetBrains Mono'; color: rgba(255,255,255,0.2); font-size: 5rem; font-weight: 900;">NO H.Q.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="reveal">
+                        <h2 style="font-size: 2rem; margin-bottom: 2rem;">Intercepted Transmissions</h2>
+                        <div class="transmission-card">
+                            <p style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; position: relative; z-index: 2;">
+                                "I spent 5 years at big agencies. I did more real work in my first month at Zyrova than I did in those 5 years combined. No red tape. Just shipping."
+                            </p>
+                            <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--c-brand-light);">
+                                // AGENT K. (FRONTEND)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal delay-100" style="margin-top: 4rem;">
+                        <div class="transmission-card">
+                            <p style="font-size: 1.1rem; color: #fff; margin-bottom: 1rem; position: relative; z-index: 2;">
+                                "The standard here is frighteningly high. It forces you to level up every single day. If you want to be comfortable, don't come here."
+                            </p>
+                            <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--c-brand-light);">
+                                // AGENT M. (DESIGN)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container" style="max-width: 800px;">
+                <div class="reveal mb-4">
+                    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--text-tertiary);">// TACTICAL DEBRIEF (FAQ)</h2>
+                </div>
+                
+                <div class="reveal delay-100">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is this fully remote?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. We don't care where you sit, as long as you have good internet and ship elite code.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Do you accept juniors?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            We hire based on trajectory, not just years. If your portfolio proves you are an outlier, we will talk.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What is the interview process?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            1. Portfolio Review. 2. Culture Fit (Founder). 3. Paid Test Task. 4. Offer. No whiteboard coding interviews.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section text-center" style="padding: 10rem 0;" id="uplink">
+            <div class="container">
+                <div class="reveal">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-tertiary); font-family: 'JetBrains Mono';">Ready to deploy?</h2>
+                    
+                    <div class="uplink-form-container">
+                        <div style="font-family: 'JetBrains Mono'; color: var(--c-success); margin-bottom: 2rem; font-size: 0.8rem; letter-spacing: 2px;">
+                            // SECURE UPLINK ESTABLISHED
+                        </div>
+
+                        <form action="https://formsubmit.co/USAWEBMASTERSDRIP@gmail.com" method="POST">
+                            <input type="hidden" name="_next" value="https://akashjadon04.github.io/zyrova-digital/success.html">
+                            <input type="hidden" name="_subject" value="NEW OPERATIVE APPLICATION">
+                            <input type="hidden" name="_captcha" value="false">
+
+                            <div class="titan-input-group">
+                                <input type="text" name="name" id="name" class="titan-input" placeholder=" " required>
+                                <label for="name" class="titan-label">Operative Name</label>
+                            </div>
+
+                            <div class="titan-input-group">
+                                <input type="email" name="email" id="email" class="titan-input" placeholder=" " required>
+                                <label for="email" class="titan-label">Comms Frequency (Email)</label>
+                            </div>
+
+                            <div class="titan-input-group">
+                                <input type="text" name="role" id="role" class="titan-input" placeholder=" " required>
+                                <label for="role" class="titan-label">Target Role</label>
+                            </div>
+
+                            <div class="titan-input-group">
+                                <input type="url" name="portfolio" id="portfolio" class="titan-input" placeholder=" " required>
+                                <label for="portfolio" class="titan-label">Dossier Link (Portfolio/LinkedIn)</label>
+                            </div>
+
+                            <div class="titan-input-group">
+                                <input type="text" name="message" id="message" class="titan-input" placeholder=" ">
+                                <label for="message" class="titan-label">Encrypted Message (Optional)</label>
+                            </div>
+
+                            <button type="submit" class="submit-breach-btn">
+                                TRANSMIT DATA
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center" style="padding: 4rem 0;">
+            <p style="color: var(--text-tertiary); font-size: 0.8rem; font-family: 'JetBrains Mono';">
+                ZYROVA DIGITAL // SECURE CONNECTION // EST 2026
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // System Log Logic
+        const logContainer = document.getElementById('sys-log');
+        const logs = [
+            "Scanning neural network...", "Connection established: 192.168.X.X", "Checking recruitment database...", "3 Positions found.", "Optimizing WebGL context...", "Physics engine: ONLINE", "Encryption: AES-256", "User detected: ELITE TIER", "Decrypting mission files...", "Welcome to the Hive."
+        ];
+        let logIndex = 0;
+        function addLog() {
+            if(logIndex < logs.length) {
+                const div = document.createElement('div');
+                div.className = 'log-entry';
+                div.innerHTML = `<span>></span> ${logs[logIndex]}`;
+                if(logContainer) logContainer.prepend(div);
+                logIndex++;
+                setTimeout(addLog, Math.random() * 800 + 200);
+            }
+        }
+        setTimeout(addLog, 4000);
+
+        // FAQ Logic
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

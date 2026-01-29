@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>SECURE VAULT | Zyrova Privacy Protocol</title>
+    <meta name="theme-color" content="#020617">
+    <link rel="canonical" href="https://zyrova.com/privacy">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- GOD MODE PRIVACY STYLES --- */
+        
+        /* 1. Cyber Grid Background */
+        .cyber-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                linear-gradient(rgba(14, 116, 144, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 116, 144, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);
+            animation: grid-scroll 20s linear infinite;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        @keyframes grid-scroll {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0) scale(2); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(40px) scale(2); }
+        }
+
+        /* 2. Scanner Bar Effect */
+        .scan-line {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+            background: var(--c-success);
+            box-shadow: 0 0 15px var(--c-success);
+            opacity: 0.5;
+            animation: scan 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* 3. Typography Upgrades */
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--c-success);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .blink { animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* 4. Sticky HUD Sidebar */
+        .hud-sidebar {
+            position: sticky;
+            top: 140px;
+            border-left: 2px solid rgba(255,255,255,0.1);
+            padding-left: 2rem;
+        }
+
+        .hud-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-tertiary);
+            text-decoration: none;
+            padding: 0.75rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .hud-link::before {
+            content: '';
+            position: absolute;
+            left: -2.15rem; /* Aligns with border */
+            top: 50%; transform: translateY(-50%);
+            width: 4px; height: 0;
+            background: var(--c-brand-light);
+            transition: height 0.3s;
+        }
+
+        .hud-link:hover, .hud-link.active {
+            color: var(--c-brand-light);
+            padding-left: 10px;
+        }
+
+        .hud-link.active::before { height: 100%; box-shadow: 0 0 10px var(--c-brand-light); }
+
+        /* 5. Classified File Cards */
+        .dossier-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            transition: border-color 0.3s;
+        }
+
+        .dossier-card:hover {
+            border-color: rgba(103, 232, 249, 0.3);
+        }
+
+        /* Corner Markers for "Tech" feel */
+        .corner {
+            position: absolute; width: 10px; height: 10px;
+            border: 2px solid var(--text-tertiary);
+            transition: all 0.3s;
+        }
+        .c-tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+        .c-tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+        .c-bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+        .c-br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+        .dossier-card:hover .corner { width: 20px; height: 20px; border-color: var(--c-brand-light); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .grid-sidebar { grid-template-columns: 1fr; }
+            .hud-sidebar { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cyber-grid"></div>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                </svg>
+                Zyrova
+            </a>
+            <nav>
+                <button class="nav-toggle" aria-label="Open Menu">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="case-studies.html" class="nav-link">Results</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                    <li><a href="about.html" class="nav-link">Agency</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn btn-primary">Start Project</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="section" style="padding-top: 180px; padding-bottom: 4rem;">
+            <div class="container text-center">
+                <div class="reveal">
+                    <div class="status-badge">
+                        <span class="blink">●</span> SYSTEM SECURE // ENCRYPTED CONNECTION
+                    </div>
+                    
+                    <h1 class="glitch" data-text="Privacy Protocol.">Privacy <span class="text-gradient" style="background: linear-gradient(to right, #10b981, #34d399); -webkit-background-clip: text; color: transparent;">Protocol.</span></h1>
+                    
+                    <p style="margin: 0 auto; max-width: 650px; font-size: 1.2rem;">
+                        We treat your data like a state secret. No tracking pixels, no hidden sales, no BS. <br>
+                        This is the vault where your digital footprint is secured.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="grid-2 grid-sidebar" style="grid-template-columns: 250px 1fr; gap: 4rem; align-items: start;">
+                    
+                    <aside class="hud-sidebar reveal">
+                        <div style="margin-bottom: 2rem; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-tertiary);">
+                            INDEX // 001
+                        </div>
+                        <nav class="flex-col">
+                            <a href="#intel" class="hud-link active">01 // Intel Collection</a>
+                            <a href="#usage" class="hud-link">02 // Operational Use</a>
+                            <a href="#security" class="hud-link">03 // The Vault</a>
+                            <a href="#cookies" class="hud-link">04 // Cookie Trace</a>
+                            <a href="#rights" class="hud-link">05 // User Rights</a>
+                        </nav>
+                        
+                        <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 8px;">
+                            <div style="font-size: 0.7rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">DPO CONTACT</div>
+                            <div style="font-weight: 700;">privacy@zyrova.com</div>
+                        </div>
+                    </aside>
+
+                    <div class="legal-content">
+                        
+                        <div id="intel" class="dossier-card reveal">
+                            <div class="corner c-tl"></div><div class="corner c-tr"></div>
+                            <div class="corner c-bl"></div><div class="corner c-br"></div>
+                            
+                            <h2 class="flex items-center gap-2" style="font-size: 1.75rem; margin-bottom: 1.5rem;">
+                                <span class="mono" style="color: var(--c-brand-light); font-size: 1rem;">01 //</span> 
+                                Intel Collection
+                            </h2>
+                            <p>We only collect data required to execute your mission. We categorize this intelligence into three tiers:</p>
+                            
+                            <div class="grid-2 gap-1" style="margin-top: 2rem;">
+                                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-left: 2px solid var(--c-brand-main);">
+                                    <strong style="color: #fff; display:block; margin-bottom: 0.5rem;">Identity Data</strong>
+                                    <span style="font-size: 0.9rem;">First name, last name, username, or similar identifier.</span>
+                                </div>
+                                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-left: 2px solid var(--c-brand-light);">
+                                    <strong style="color: #fff; display:block; margin-bottom: 0.5rem;">Contact Data</strong>
+                                    <span style="font-size: 0.9rem;">Billing address, delivery address, email address, and phone numbers.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="usage" class="dossier-card reveal delay-100">
+                            <div class="corner c-tl"></div><div class="corner c-tr"></div>
+                            <div class="corner c-bl"></div><div class="corner c-br"></div>
+
+                            <h2 class="flex items-center gap-2" style="font-size: 1.75rem; margin-bottom: 1.5rem;">
+                                <span class="mono" style="color: var(--c-brand-light); font-size: 1rem;">02 //</span> 
+                                Operational Usage
+                            </h2>
+                            <p>Your data is fuel for the engine. Here is specifically how we burn it to generate results:</p>
+                            <ul style="list-style: none; margin-top: 1.5rem;">
+                                <li class="flex items-start gap-2 mb-2">
+                                    <span style="color: var(--c-success);">✔</span> 
+                                    <span>To register you as a new client and set up your project dashboard.</span>
+                                </li>
+                                <li class="flex items-start gap-2 mb-2">
+                                    <span style="color: var(--c-success);">✔</span> 
+                                    <span>To process and deliver your order (web design, SEO audit).</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span style="color: var(--c-success);">✔</span> 
+                                    <span>To manage our relationship with you (notifying you about changes to terms).</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div id="security" class="dossier-card reveal">
+                            <div class="scan-line"></div>
+                            
+                            <h2 class="flex items-center gap-2" style="font-size: 1.75rem; margin-bottom: 1.5rem;">
+                                <span class="mono" style="color: var(--c-success); font-size: 1rem;">03 //</span> 
+                                The Vault
+                            </h2>
+                            <p>We employ military-grade protocols to ensure your digital assets remain untouched.</p>
+                            <p>We use <strong>SSL/TLS encryption</strong> for all data in transit. Our databases are encrypted at rest. Access to your personal data is restricted to employees, agents, and contractors who have a strict business need to know. They are subject to a duty of confidentiality.</p>
+                        </div>
+
+                        <div id="cookies" class="dossier-card reveal">
+                            <h2 class="flex items-center gap-2" style="font-size: 1.75rem; margin-bottom: 1.5rem;">
+                                <span class="mono" style="color: var(--text-tertiary); font-size: 1rem;">04 //</span> 
+                                Cookie Trace
+                            </h2>
+                            <p>We use cookies solely to optimize the physics engine of this website and ensure smooth navigation. We do not use third-party trackers to follow you around the web.</p>
+                            <div style="margin-top: 1.5rem;">
+                                <button class="btn btn-secondary" onclick="alert('Cookie preferences reset.')">Reset Cookie Settings</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bg-text">ZYROVA</div>
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 2rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/></svg>
+                    Zyrova
+                </a>
+                <p>HQ: Austin, Texas<br>Global Operations</p>
+                <div class="flex gap-1">
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">𝕏</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">in</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">IG</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-heading">Services</div>
+                <a href="services.html" class="footer-link">Web Development</a>
+                <a href="services.html" class="footer-link">Local SEO</a>
+                <a href="services.html" class="footer-link">Paid Ads</a>
+                <a href="services.html" class="footer-link">Copywriting</a>
+            </div>
+            <div>
+                <div class="footer-heading">Company</div>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="case-studies.html" class="footer-link">Case Studies</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+            <div>
+                <div class="footer-heading">Legal</div>
+                <a href="privacy.html" class="footer-link" style="color: var(--c-brand-light);">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Sitemap</a>
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="copyright-left">&copy; 2026 Zyrova Digital. All rights reserved.</div>
+            <a href="about.html" class="owner-signature">Designed by Akash Jadon</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.dossier-card');
+            const navLinks = document.querySelectorAll('.hud-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 250) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

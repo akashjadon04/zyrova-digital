@@ -1,0 +1,824 @@
+/* * --------------------------------------------------------------------------
+ * ZYROVA DIGITAL | V6 "GOD MODE" STYLESHEET (PREMIUM UPGRADE)
+ * --------------------------------------------------------------------------
+ * ARCHITECTURE:
+ * 1.  TOKENS & PHYSICS VARIABLES
+ * 2.  FLUID TYPOGRAPHY & RESET
+ * 3.  UTILITY FRAMEWORK (Mini-Tailwind)
+ * 4.  SVG DATA-URI LOGO ASSETS (Embedded)
+ * 5.  LAYOUT & GRID SYSTEM
+ * 6.  COMPONENT: HEADER (Diamond Glass 4.0)
+ * 7.  COMPONENT: HERO (3D Perspective)
+ * 8.  COMPONENT: MAGNETIC BUTTONS
+ * 9.  COMPONENT: SPOTLIGHT CARDS
+ * 10. COMPONENT: FORMS (Physics-based)
+ * 11. COMPONENT: INFINITE MARQUEE
+ * 12. COMPONENT: PARTICLES & GRAIN
+ * 13. COMPONENT: MEGA FOOTER (Owner Signature Edition)
+ * 14. ANIMATION KEYFRAMES
+ * --------------------------------------------------------------------------
+ */
+
+/* =========================================
+   1. TOKENS & PHYSICS VARIABLES
+   ========================================= */
+:root {
+    /* --- CORE PALETTE: "Deep Space & Teal" --- */
+    --c-brand-darkest: #020617;
+    --c-brand-dark:    #0f172a;
+    --c-brand-main:    #0e7490; /* Summit Teal */
+    --c-brand-glow:    #06b6d4; /* Electric Cyan */
+    --c-brand-light:   #67e8f9; /* Highlight */
+    
+    --c-accent-gold:   #f59e0b;
+    --c-accent-purple: #8b5cf6;
+    --c-success:       #10b981;
+    --c-danger:        #ef4444;
+
+    /* --- SURFACES (OLED Optimized) --- */
+    --bg-body:         #020617;
+    --bg-surface-1:    #0f172a;
+    --bg-surface-2:    #1e293b;
+    --bg-glass:        rgba(15, 23, 42, 0.65);
+    --bg-glass-heavy:  rgba(2, 6, 23, 0.90); /* Darker for premium contrast */
+    --border-glass:    rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(103, 232, 249, 0.4);
+
+    /* --- TYPOGRAPHY (Fluid Scale) --- */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Outfit', sans-serif;
+    
+    --text-primary:    #f8fafc;
+    --text-secondary:  #94a3b8;
+    --text-tertiary:   #64748b;
+    --text-invert:     #020617;
+
+    /* --- PHYSICS & EASING --- */
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-smooth:  cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-expo:    cubic-bezier(0.19, 1, 0.22, 1);
+    
+    --duration-flash: 150ms;
+    --duration-fast:  300ms;
+    --duration-base:  600ms;
+    --duration-slow:  1200ms;
+
+    /* --- DIMENSIONS & SPACING --- */
+    --header-height:  90px;
+    --container-max:  1440px;
+    --gutter:         clamp(1.5rem, 5vw, 4rem);
+    
+    --radius-xs:      4px;
+    --radius-sm:      8px;
+    --radius-md:      16px;
+    --radius-lg:      24px;
+    --radius-full:    9999px;
+
+    /* --- EFFECTS --- */
+    --shadow-sm:      0 2px 4px rgba(0,0,0,0.4);
+    --shadow-lg:      0 20px 40px -10px rgba(0,0,0,0.6);
+    --shadow-glow:    0 0 60px rgba(14, 116, 144, 0.25);
+    --blur-glass:     backdrop-filter: blur(20px);
+    
+    /* --- MOUSE TRACKING DEFAULTS (JS Updates These) --- */
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+}
+
+/* =========================================
+   2. RESET & BASE
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    /* Static Noise Overlay */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+::selection {
+    background: var(--c-brand-light);
+    color: var(--c-brand-darkest);
+}
+
+/* =========================================
+   3. TYPOGRAPHY SYSTEM
+   ========================================= */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+
+h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: clamp(1rem, 1.1vw, 1.25rem);
+    color: var(--text-secondary);
+    max-width: 65ch;
+    margin-bottom: 1.5rem;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #fff 10%, var(--c-brand-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.text-accent { color: var(--c-brand-light); }
+.text-gold { color: var(--c-accent-gold); }
+
+/* =========================================
+   4. EMBEDDED LOGO ASSETS (Data URIs)
+   ========================================= */
+/* These are high-quality SVG definitions for "Real" looking clients */
+:root {
+    --logo-dental: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><path d="M30 25c0 8-5 15-12 15s-12-7-12-15 5-15 12-15 12 7 12 15z" stroke="%2364748b" stroke-width="3"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">APEX DENTAL</text></svg>');
+    
+    --logo-tech: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><rect x="10" y="10" width="20" height="20" rx="4" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">NEXUS AI</text></svg>');
+    
+    --logo-legal: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><path d="M20 10l10 25h-20z" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">VANGUARD LAW</text></svg>');
+    
+    --logo-fitness: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><circle cx="20" cy="25" r="10" stroke="%2364748b" stroke-width="4"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">IRON GYM</text></svg>');
+
+    --logo-med: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><rect x="18" y="10" width="8" height="30" fill="%2364748b"/><rect x="7" y="21" width="30" height="8" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">PRIME CARE</text></svg>');
+}
+
+/* =========================================
+   5. LAYOUT UTILITIES
+   ========================================= */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    position: relative;
+    z-index: 2;
+}
+
+.section {
+    padding: clamp(6rem, 15vh, 12rem) 0;
+    position: relative;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-1 { gap: 1rem; }
+.gap-2 { gap: 2rem; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+/* =========================================
+   6. COMPONENT: HEADER (Diamond Glass 4.0)
+   ========================================= */
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-height);
+    z-index: 9999;
+    transition: all var(--duration-base) var(--ease-expo);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02); /* Subtle initial border */
+}
+
+.header.scrolled {
+    background: var(--bg-glass-heavy);
+    backdrop-filter: blur(24px); /* Increased blur for premium feel */
+    -webkit-backdrop-filter: blur(24px);
+    height: 80px;
+    border-bottom: 1px solid var(--border-glass);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6); /* Deeper shadow */
+}
+
+/* Premium Gradient Line on Scroll */
+.header.scrolled::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-highlight), transparent);
+    opacity: 0.5;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    letter-spacing: -0.02em;
+}
+
+.logo svg {
+    color: var(--c-brand-light);
+    filter: drop-shadow(0 0 12px rgba(103, 232, 249, 0.6)); /* Enhanced Glow */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.nav-link {
+    position: relative;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    transition: color var(--duration-fast);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 50%; width: 0; height: 2px;
+    background: var(--c-brand-light);
+    box-shadow: 0 0 10px var(--c-brand-light);
+    transform: translateX(-50%);
+    transition: width var(--duration-fast) var(--ease-elastic);
+}
+
+.nav-link:hover { color: var(--text-primary); }
+.nav-link:hover::after { width: 80%; }
+
+/* Mobile Menu Trigger */
+.nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+/* =========================================
+   7. COMPONENT: HERO (3D Perspective)
+   ========================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--header-height);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Physics Background Canvas is handled by JS, but we style it here */
+#physics-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* 3D Visual Container */
+.hero-visual {
+    perspective: 1000px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-card-3d {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    /* JS will rotate this */
+    transform-style: preserve-3d;
+    transition: transform 0.1s linear; 
+}
+
+/* Floating Elements */
+.float-tag {
+    position: absolute;
+    background: var(--bg-surface-2);
+    border: 1px solid var(--c-brand-main);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: float 6s ease-in-out infinite;
+    z-index: 3;
+}
+
+.float-tag.tag-1 { top: -10%; right: -5%; animation-delay: 0s; }
+.float-tag.tag-2 { bottom: -10%; left: -5%; animation-delay: -2s; border-color: var(--c-success); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* =========================================
+   8. COMPONENT: MAGNETIC BUTTONS
+   ========================================= */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.125rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.1s linear; /* Fast for physics */
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary {
+    background: var(--c-brand-main);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(14, 116, 144, 0.4);
+}
+
+/* Liquid Fill Effect */
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 300%; height: 300%;
+    background: radial-gradient(circle, var(--c-brand-light) 0%, var(--c-brand-main) 100%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s var(--ease-elastic);
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.btn-primary:hover {
+    color: var(--c-brand-darkest);
+    box-shadow: 0 0 40px rgba(103, 232, 249, 0.6);
+    border-color: var(--c-brand-light);
+}
+
+.btn-primary:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-glass);
+}
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--c-brand-main);
+}
+
+/* =========================================
+   9. COMPONENT: SPOTLIGHT CARDS
+   ========================================= */
+.spotlight-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--duration-fast) var(--ease-smooth);
+}
+
+/* The Spotlight Gradient (Controlled by JS vars) */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.card:hover::after { opacity: 1; }
+.card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+
+.card-content { position: relative; z-index: 2; }
+
+.card-icon {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, rgba(14, 116, 144, 0.2), rgba(2, 6, 23, 0.5));
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.75rem;
+    color: var(--c-brand-light);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* =========================================
+   10. COMPONENT: FORMS (Physics-based)
+   ========================================= */
+.form-card {
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s var(--ease-elastic);
+}
+
+.input-group { position: relative; margin-bottom: 2rem; }
+
+.input-field {
+    width: 100%;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 1rem 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.input-label {
+    position: absolute;
+    left: 1rem; top: 1rem;
+    color: var(--text-tertiary);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s var(--ease-expo);
+}
+
+/* Float logic */
+.input-field:focus,
+.input-field:not(:placeholder-shown) {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--c-brand-main);
+    box-shadow: 0 0 0 4px rgba(14, 116, 144, 0.2);
+    padding-top: 1.5rem;
+    padding-bottom: 0.25rem;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+    top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--c-brand-light);
+    font-weight: 700;
+}
+
+/* =========================================
+   11. COMPONENT: INFINITE MARQUEE (Logos)
+   ========================================= */
+.marquee-section {
+    border-top: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-glass);
+    background: rgba(0,0,0,0.3);
+    padding: 3rem 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 6rem;
+    animation: scroll 40s linear infinite;
+}
+
+.client-logo {
+    height: 50px;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    filter: grayscale(100%);
+}
+
+.client-logo:hover { opacity: 1; filter: grayscale(0%) drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+
+/* Map variables to classes */
+.logo-dental { background-image: var(--logo-dental); }
+.logo-tech { background-image: var(--logo-tech); }
+.logo-legal { background-image: var(--logo-legal); }
+.logo-fitness { background-image: var(--logo-fitness); }
+.logo-med { background-image: var(--logo-med); }
+
+@keyframes scroll {
+    to { transform: translateX(-50%); }
+}
+
+/* =========================================
+   12. FOOTER (Owner Signature Edition)
+   ========================================= */
+.footer {
+    background: #000;
+    padding: 8rem 0 3rem;
+    border-top: 1px solid var(--border-glass);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Giant Background Text */
+.footer-bg-text {
+    position: absolute;
+    bottom: -50px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 25vw;
+    font-weight: 900;
+    color: rgba(255,255,255,0.02);
+    line-height: 0.8;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 0;
+}
+
+.footer-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+.footer-heading {
+    color: #fff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    opacity: 0.6;
+    font-weight: 700;
+}
+
+.footer-link {
+    display: block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.footer-link:hover {
+    color: var(--c-brand-light);
+    transform: translateX(6px);
+}
+
+/* --- COPYRIGHT SECTION REBUILT --- */
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+
+.copyright-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Premium Owner Signature */
+.owner-signature {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: all 0.3s var(--ease-smooth);
+    position: relative;
+}
+
+.owner-signature:hover {
+    color: var(--c-accent-gold);
+    opacity: 1;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.owner-signature::before {
+    content: '///';
+    color: var(--c-brand-main);
+    margin-right: 0.5rem;
+    font-weight: 800;
+}
+
+/* =========================================
+   13. ANIMATION KEYFRAMES & UTILS
+   ========================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s var(--ease-smooth), transform 1s var(--ease-smooth);
+}
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.stagger-child {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger-child.visible { opacity: 1; transform: translateY(0); }
+
+/* Glitch Effect for Title */
+.glitch { position: relative; }
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+.glitch::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip: rect(30px, 9999px, 10px, 0); }
+    5% { clip: rect(80px, 9999px, 90px, 0); }
+    100% { clip: rect(40px, 9999px, 60px, 0); }
+}
+@keyframes glitch-anim-2 {
+    0% { clip: rect(10px, 9999px, 80px, 0); }
+    5% { clip: rect(90px, 9999px, 10px, 0); }
+    100% { clip: rect(50px, 9999px, 20px, 0); }
+}
+
+/* =========================================
+   14. MOBILE VIEW OPTIMIZATIONS
+   ========================================= */
+@media (max-width: 1024px) {
+    .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
+    .hero { text-align: center; padding-top: 120px; }
+    .hero-content { margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    /* --- HEADER & NAVIGATION --- */
+    .header { height: 70px; }
+    .header.scrolled { height: 70px; }
+    
+    .nav-toggle { 
+        display: block; 
+        font-size: 1.5rem; 
+        z-index: 10001; 
+    }
+
+    /* Mobile Menu (Hidden by default) */
+    .nav-menu {
+        display: none; /* JS toggles 'flex' */
+        flex-direction: column;
+        position: fixed;
+        top: 70px; left: 0; width: 100%;
+        background: var(--bg-glass-heavy);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        border-bottom: 1px solid var(--border-glass);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        gap: 1.5rem;
+    }
+    .nav-menu.active { display: flex; animation: slideDown 0.3s ease-out; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Fix Overlapping Header Button */
+    .header .btn-primary {
+        display: none; /* Hide 'Start Project' in header to clean up UI */
+    }
+    
+    /* Add 'Start Project' inside Mobile Menu instead */
+    .nav-menu::after {
+        content: 'Start Project ->';
+        display: block;
+        text-align: center;
+        background: var(--c-brand-main);
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: 700;
+        margin-top: 1rem;
+    }
+
+    /* --- HERO & LAYOUT --- */
+    .hero { padding-top: 100px; }
+    h1 { font-size: 2.5rem; line-height: 1.2; }
+    .float-tag { display: none; /* Remove floating tags on mobile to reduce clutter */ }
+    
+    .container { padding: 0 1.25rem; }
+    .grid-3, .grid-4, .footer-grid { grid-template-columns: 1fr; }
+    
+    /* --- BUTTONS RESIZED --- */
+    .flex.gap-1 { flex-direction: column; width: 100%; gap: 0.75rem; }
+    .btn { 
+        width: 100%; 
+        padding: 0.9rem; /* Slightly smaller padding */
+        font-size: 0.95rem;
+    }
+
+    /* --- CARDS & SECTIONS --- */
+    .section { padding: 3.5rem 0; }
+    .card, .form-card { padding: 1.5rem; }
+    .card-icon { width: 48px; height: 48px; font-size: 1.25rem; }
+    
+    /* --- FOOTER --- */
+    .copyright { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer-bg-text { display: none; }
+}

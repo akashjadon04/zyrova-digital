@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Zyrova Digital | The Growth Engine for Local Business</title>
+    <meta name="description" content="Zyrova builds high-performance digital infrastructure. Custom coded websites, local SEO dominance, and conversion funnels. No templates.">
+    <meta name="theme-color" content="#020617">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Specific Styles for the Revenue Animation Tile */
+        .revenue-canvas {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            opacity: 0.5;
+            mask-image: linear-gradient(to top, black, transparent);
+            -webkit-mask-image: linear-gradient(to top, black, transparent);
+        }
+        
+        .live-indicator {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulse-green 1.5s infinite;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        
+        @keyframes pulse-green {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                </svg>
+                Zyrova
+            </a>
+
+            <nav>
+                <button class="nav-toggle" aria-label="Open Menu">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="case-studies.html" class="nav-link">Results</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                    <li><a href="about.html" class="nav-link">Agency</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact.html" class="btn btn-primary">Start Project</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container grid-2">
+                
+                <div class="hero-content reveal">
+                    <div class="float-tag tag-1">
+                        <span style="color:var(--c-brand-light)">●</span> Accepting Clients Q1
+                    </div>
+                    
+                    <h1 class="glitch" data-text="Turning Pixels into Profits.">
+                        Turning Pixels <br>
+                        <span class="text-gradient">into Profits.</span>
+                    </h1>
+                    
+                    <p>
+                        Stop losing customers to slow, ugly websites. We build 
+                        <span class="text-accent">high-performance digital infrastructure</span> 
+                        for clinics, firms, and local brands.
+                    </p>
+                    
+                    <div class="flex gap-1" style="flex-wrap: wrap;">
+                        <a href="contact.html" class="btn btn-primary">Get Launch Plan</a>
+                        <a href="#audit" class="btn btn-secondary">Free Website Audit</a>
+                    </div>
+
+                    <div style="margin-top: 3rem; display: flex; align-items: center; gap: 1rem;">
+                        <div style="display: flex;">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Founder" 
+                                 class="avatar-placeholder" 
+                                 style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #0f172a; object-fit: cover; margin-left: -10px; z-index:3;">
+                            
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Founder" 
+                                 class="avatar-placeholder" 
+                                 style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #0f172a; object-fit: cover; margin-left: -10px; z-index:2;">
+                            
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Founder" 
+                                 class="avatar-placeholder" 
+                                 style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #0f172a; object-fit: cover; margin-left: -10px; z-index:1;">
+                        </div>
+                        <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                            Trusted by <span style="color: #fff; font-weight: 700;">50+ Founders</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal delay-200">
+                    <div class="hero-card-3d card">
+                        <div class="flex justify-between items-center" style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 1rem;">
+                            <div style="width: 40px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 4px;"></div>
+                            <div style="width: 10px; height: 10px; background: var(--c-success); border-radius: 50%; box-shadow: 0 0 10px var(--c-success);"></div>
+                        </div>
+                        
+                        <div class="grid-2 gap-1" style="margin-bottom: 2rem;">
+                            <div style="background: rgba(255,255,255,0.05); height: 120px; border-radius: 8px;"></div>
+                            <div style="background: linear-gradient(180deg, var(--c-brand-main), transparent); height: 120px; border-radius: 8px; opacity: 0.5;"></div>
+                        </div>
+
+                        <div class="flex items-center gap-1" style="background: rgba(16, 185, 129, 0.1); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3); position: relative; overflow: hidden;">
+                            <canvas id="revenue-graph" class="revenue-canvas"></canvas>
+                            
+                            <div style="position: relative; z-index: 2; display: flex; align-items: center; gap: 1rem; width: 100%;">
+                                <div style="font-size: 1.5rem;">📈</div>
+                                <div>
+                                    <div style="font-size: 0.8rem; color: var(--c-success); display: flex; align-items: center;">
+                                        <span class="live-indicator"></span> LIVE REVENUE
+                                    </div>
+                                    <div style="font-size: 1.5rem; font-weight: 800; color: #fff;">$124,500</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="float-tag tag-2">
+                            <span>🚀</span> 100 PageSpeed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="marquee-section">
+            <div class="marquee-track">
+                <div class="client-logo logo-dental" title="Apex Dental"></div>
+                <div class="client-logo logo-tech" title="Nexus AI"></div>
+                <div class="client-logo logo-legal" title="Vanguard Law"></div>
+                <div class="client-logo logo-fitness" title="Iron Gym"></div>
+                <div class="client-logo logo-med" title="Prime Care"></div>
+                <div class="client-logo logo-dental"></div>
+                <div class="client-logo logo-tech"></div>
+                <div class="client-logo logo-legal"></div>
+                <div class="client-logo logo-fitness"></div>
+                <div class="client-logo logo-med"></div>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <div class="container">
+                <div class="reveal" style="max-width: 800px; margin-bottom: 4rem;">
+                    <h4>Digital Dominance</h4>
+                    <h2>Everything you need to <span class="text-gradient">win online.</span></h2>
+                </div>
+
+                <div class="spotlight-group">
+                    <div class="card reveal">
+                        <div class="card-icon">⚡</div>
+                        <div class="card-content">
+                            <h3>Hyper-Speed Dev</h3>
+                            <p>We hand-code every site. No WordPress bloat. Your site will load instantly, improving SEO and user retention immediately.</p>
+                            <ul style="list-style: none; color: var(--text-secondary); margin-top: 1rem;">
+                                <li class="flex items-center gap-1 mb-1"><span class="text-accent">✓</span> 99/100 Google Score</li>
+                                <li class="flex items-center gap-1"><span class="text-accent">✓</span> Global CDN Hosting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-100">
+                        <div class="card-icon">📍</div>
+                        <div class="card-content">
+                            <h3>Local SEO</h3>
+                            <p>Ranking #1 on Google Maps prints money. We optimize your GMB, citations, and on-page schema to dominate your city.</p>
+                            <ul style="list-style: none; color: var(--text-secondary); margin-top: 1rem;">
+                                <li class="flex items-center gap-1 mb-1"><span class="text-accent">✓</span> Keyword Domination</li>
+                                <li class="flex items-center gap-1"><span class="text-accent">✓</span> Reputation Management</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-200">
+                        <div class="card-icon">🎨</div>
+                        <div class="card-content">
+                            <h3>Conversion Design</h3>
+                            <p>Traffic is useless if it doesn't convert. We use psychological triggers and UX best practices to turn visitors into leads.</p>
+                            <ul style="list-style: none; color: var(--text-secondary); margin-top: 1rem;">
+                                <li class="flex items-center gap-1 mb-1"><span class="text-accent">✓</span> A/B Tested Layouts</li>
+                                <li class="flex items-center gap-1"><span class="text-accent">✓</span> High-Ticket Copywriting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="audit">
+            <div class="container">
+                <div class="form-card reveal">
+                    <div class="grid-2">
+                        <div>
+                            <h2>Free Website Physics Audit</h2>
+                            <p>Test the power of our engine. Enter your URL and click the button to see the physics system in action (and get a real audit via email).</p>
+                            
+                            <div style="margin-top: 2rem;">
+                                <div class="flex items-center gap-1 mb-2 stagger-child">
+                                    <div style="width: 20px; height: 2px; background: var(--c-brand-light);"></div>
+                                    <span>Manual Code Review</span>
+                                </div>
+                                <div class="flex items-center gap-1 mb-2 stagger-child">
+                                    <div style="width: 20px; height: 2px; background: var(--c-brand-light);"></div>
+                                    <span>SEO Opportunity Report</span>
+                                </div>
+                                <div class="flex items-center gap-1 stagger-child">
+                                    <div style="width: 20px; height: 2px; background: var(--c-brand-light);"></div>
+                                    <span>Speed Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <form id="audit-form" action="https://formsubmit.co/usawebmastersdrip@gmail.com" method="POST">
+                                <input type="hidden" name="_next" value="https://akashjadon04.github.io/zyrova-digital/success.html">
+                                <input type="hidden" name="_subject" value="New Website Audit Request">
+                                <input type="hidden" name="_captcha" value="false">
+                                
+                                <div class="input-group">
+                                    <input type="url" id="audit-url" name="url" class="input-field" placeholder=" " required>
+                                    <label for="audit-url" class="input-label">Website URL (e.g. google.com)</label>
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="email" id="audit-email" name="email" class="input-field" placeholder=" " required>
+                                    <label for="audit-email" class="input-label">Your Email</label>
+                                </div>
+
+                                <button type="submit" id="audit-submit" class="btn btn-primary w-full">
+                                    Run Physics Audit
+                                </button>
+                                
+                                <p style="font-size: 0.8rem; margin-top: 1rem; text-align: center; color: var(--text-tertiary);">
+                                    Try entering text without a dot (.) to trigger the shake physics.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bg-text">ZYROVA</div>
+        
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 2rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                    </svg>
+                    Zyrova
+                </a>
+                <p>
+                    HQ: Austin, Texas<br>
+                    Global Operations
+                </p>
+                <div class="flex gap-1">
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">𝕏</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">in</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">IG</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-heading">Services</div>
+                <a href="services.html" class="footer-link">Web Development</a>
+                <a href="services.html" class="footer-link">Local SEO</a>
+                <a href="services.html" class="footer-link">Paid Ads</a>
+                <a href="services.html" class="footer-link">Copywriting</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Company</div>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="case-studies.html" class="footer-link">Case Studies</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Legal</div>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Sitemap</a>
+            </div>
+        </div>
+
+        <div class="container copyright">
+            <div class="copyright-left">
+                &copy; 2026 Zyrova Digital. All rights reserved.
+            </div>
+            
+            <a href="about.html" class="owner-signature">Designed by Akash Jadon</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        (function() {
+            const canvas = document.getElementById('revenue-graph');
+            if(canvas) {
+                const ctx = canvas.getContext('2d');
+                let width = canvas.width = canvas.parentElement.offsetWidth;
+                let height = canvas.height = 100;
+                
+                let points = [];
+                let scrollSpeed = 2;
+                
+                for(let i=0; i<width/scrollSpeed; i++) {
+                    points.push(Math.random() * 50 + 25);
+                }
+                
+                function animateGraph() {
+                    ctx.clearRect(0, 0, width, height);
+                    
+                    points.push(Math.random() * 50 + 25); // Add new point
+                    points.shift(); // Remove old
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(0, height);
+                    for(let i=0; i<points.length; i++) {
+                        ctx.lineTo(i * scrollSpeed, height - points[i]);
+                    }
+                    ctx.lineTo(width, height);
+                    ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+                    ctx.fill();
+                    
+                    ctx.beginPath();
+                    for(let i=0; i<points.length; i++) {
+                        ctx.lineTo(i * scrollSpeed, height - points[i]);
+                    }
+                    ctx.strokeStyle = '#10b981';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    
+                    requestAnimationFrame(animateGraph);
+                }
+                animateGraph();
+            }
+        })();
+    </script>
+</body>
+</html>

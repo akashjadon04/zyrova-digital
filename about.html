@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>About Zyrova | The Engineering of Growth</title>
+    <meta name="description" content="We are not a traditional agency. We are a digital infrastructure firm founded by Akash Jadon to eliminate slow, low-converting websites forever.">
+    <meta name="theme-color" content="#020617">
+    <link rel="canonical" href="https://zyrova.com/about">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Page-Specific Overrides for About Page */
+        .timeline-line {
+            position: absolute;
+            left: 50%; top: 0; bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--c-brand-main), transparent);
+            transform: translateX(-50%);
+        }
+        .story-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+        .signature-block {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: var(--c-accent-gold);
+            transform: rotate(-5deg);
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                </svg>
+                Zyrova
+            </a>
+
+            <nav>
+                <button class="nav-toggle" aria-label="Open Menu">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="case-studies.html" class="nav-link">Results</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                    <li><a href="about.html" class="nav-link" style="color:var(--c-brand-light)">Agency</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact.html" class="btn btn-primary">Start Project</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="section" style="padding-top: 180px; padding-bottom: 100px;">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="reveal">
+                        <span class="badge mb-2">Our Manifesto</span>
+                        <h1 class="glitch" data-text="We don't build websites.">We don't build <br><span class="text-gradient">websites.</span></h1>
+                        <h1 class="glitch" data-text="We build Assets.">We build <br><span class="text-gradient">Assets.</span></h1>
+                        
+                        <p style="font-size: 1.25rem; margin-top: 2rem;">
+                            The internet is littered with beautiful, useless websites. Platforms like Wix and Squarespace have convinced the world that "drag-and-drop" is good enough. 
+                        </p>
+                        <p style="font-size: 1.25rem;">
+                            <strong>It isn't.</strong> At Zyrova, we believe small businesses deserve the same digital firepower as Fortune 500 companies. Custom code. Instant load times. Psychological conversion triggers.
+                        </p>
+                    </div>
+
+                    <div class="hero-visual reveal delay-200">
+                        <div class="hero-card-3d card" style="height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: absolute; width: 300px; height: 300px; border: 1px solid rgba(14, 116, 144, 0.3); border-radius: 50%; animation: spin 20s linear infinite;"></div>
+                            <div style="position: absolute; width: 250px; height: 250px; border: 1px solid rgba(103, 232, 249, 0.2); border-radius: 50%; transform: rotateX(60deg); animation: spin 15s linear infinite reverse;"></div>
+                            <div style="position: absolute; width: 250px; height: 250px; border: 1px solid rgba(103, 232, 249, 0.2); border-radius: 50%; transform: rotateY(60deg); animation: spin 15s linear infinite;"></div>
+                            
+                            <div style="width: 20px; height: 20px; background: var(--c-brand-light); border-radius: 50%; box-shadow: 0 0 40px var(--c-brand-light); z-index: 10;"></div>
+                            
+                            <div class="float-tag tag-1" style="top: 20%; right: 10%;">Speed</div>
+                            <div class="float-tag tag-2" style="bottom: 20%; left: 10%;">Scale</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: linear-gradient(180deg, var(--bg-body) 0%, #0f172a 100%);">
+            <div class="container">
+                <div class="reveal text-center mb-4">
+                    <h2>The Origin Story</h2>
+                </div>
+
+                <div class="glass-card reveal delay-100" style="padding: 4rem;">
+                    <div class="grid-2" style="align-items: flex-start;">
+                        <div class="story-text">
+                            <h3 style="color: var(--c-brand-light); margin-bottom: 2rem;">"It started with a slow dental clinic..."</h3>
+                            
+                            <p>
+                                In 2023, I (Akash) walked into a local dental practice. The doctor was brilliant, the clinic was pristine, but the waiting room was empty. I asked why. He sighed and pointed to his iPad. "We paid an agency $5,000 for this website, but nobody calls."
+                            </p>
+                            
+                            <p>
+                                I opened the site on my phone. It took <strong>14 seconds</strong> to load. The "Book Now" button was broken on mobile. It wasn't a website; it was a digital wall keeping patients out.
+                            </p>
+                            
+                            <p>
+                                That night, I tore his site down. I didn't use WordPress. I didn't use a template. I hand-coded a raw HTML engine tailored for speed. 
+                            </p>
+                            
+                            <p>
+                                <strong>The result?</strong> His phone rang 12 times the next day. In one month, his practice was full. That was the moment Zyrova was born. Not as an agency, but as a rebellion against lazy, bloated, template-based web design.
+                            </p>
+
+                            <div class="signature-block">
+                                - Akash Jadon, Founder
+                            </div>
+                        </div>
+
+                        <div style="position: relative;">
+                            <div class="card" style="padding: 1rem; transform: rotate(3deg);">
+                                <img src="team-akash.jpg" alt="Akash Jadon Working" style="width: 100%; border-radius: var(--radius-sm); filter: grayscale(20%) contrast(1.1);" onerror="this.src='https://placehold.co/600x800/0f172a/FFF?text=Akash+Working';">
+                                <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-size: 0.9rem; font-weight: 700;">Akash Jadon</span>
+                                    <span style="font-size: 0.8rem; color: var(--c-brand-light);">CEO & Lead Architect</span>
+                                </div>
+                            </div>
+                            <div style="position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; border: 2px solid var(--border-glass); border-radius: var(--radius-md); z-index: -1;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="reveal text-center" style="margin-bottom: 4rem;">
+                    <h2>The Zyrova Standard</h2>
+                    <p>We operate by three non-negotiable laws.</p>
+                </div>
+
+                <div class="spotlight-group">
+                    <div class="card reveal">
+                        <div class="card-icon">⚡</div>
+                        <h3>Code is Law</h3>
+                        <p>We reject drag-and-drop builders. Every line of code is written by a human engineer to ensure mathematical perfection in performance.</p>
+                    </div>
+
+                    <div class="card reveal delay-100">
+                        <div class="card-icon">🤝</div>
+                        <h3>Client Ownership</h3>
+                        <p>We hate the "subscription trap." When you pay for a website, you should own it. No monthly rental fees. We hand over the keys.</p>
+                    </div>
+
+                    <div class="card reveal delay-200">
+                        <div class="card-icon">🧠</div>
+                        <h3>Psychology First</h3>
+                        <p>Design is not art; it is communication. We use cognitive bias principles to guide your visitor's eye directly to the "Buy" button.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: var(--bg-surface-2); overflow: hidden;">
+            <div class="container">
+                <div class="grid-2">
+                    <div class="reveal">
+                        <h2>Global Brain, <br><span class="text-gradient">Local Heart.</span></h2>
+                        <p>Zyrova operates on a distributed "Follow the Sun" model. Our design team in Austin passes the baton to our dev ops team in Europe, meaning your project moves forward 24 hours a day.</p>
+                        
+                        <div style="margin-top: 2rem;">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div style="width: 10px; height: 10px; background: var(--c-brand-main); border-radius: 50%;"></div>
+                                <span><strong>Austin, TX:</strong> Strategy & Design HQ</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div style="width: 10px; height: 10px; background: var(--c-brand-light); border-radius: 50%;"></div>
+                                <span><strong>Krakow, PL:</strong> DevOps & Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal delay-200" style="position: relative; height: 400px;">
+                        <svg width="100%" height="100%" viewBox="0 0 800 400" style="opacity: 0.6;">
+                            <path fill="#334155" d="M150,150 Q200,100 300,150 T450,150 T650,100 T800,150" stroke="none" />
+                            <circle cx="200" cy="200" r="5" fill="white" /> <circle cx="600" cy="150" r="5" fill="white" /> <path d="M200,200 Q400,50 600,150" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10,10">
+                                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" />
+                            </path>
+                            
+                            <defs>
+                                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:var(--c-brand-main);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:var(--c-brand-light);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        
+                        <div style="position: absolute; top: 50%; left: 25%; width: 20px; height: 20px; background: rgba(14, 116, 144, 0.5); border-radius: 50%; animation: ping 2s infinite;"></div>
+                        <div style="position: absolute; top: 35%; right: 25%; width: 20px; height: 20px; background: rgba(103, 232, 249, 0.5); border-radius: 50%; animation: ping 2s infinite 1s;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center mb-4 reveal">The Architects</h2>
+                
+                <div class="grid-4">
+                    <div class="card reveal" style="padding: 0; border: none; background: transparent;">
+                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
+                            <img src="team-akash.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" onerror="this.src='https://placehold.co/400x533/0e7490/FFF?text=Akash';">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                                <h4 style="margin: 0; color: #fff;">Akash Jadon</h4>
+                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Founder</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-100" style="padding: 0; border: none; background: transparent;">
+                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
+                            <img src="team-liam.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" onerror="this.src='https://placehold.co/400x533/333/FFF?text=Liam';">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                                <h4 style="margin: 0; color: #fff;">Liam O'Neal</h4>
+                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Head of Design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-200" style="padding: 0; border: none; background: transparent;">
+                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
+                            <img src="team-marta.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" onerror="this.src='https://placehold.co/400x533/444/FFF?text=Marta';">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                                <h4 style="margin: 0; color: #fff;">Marta Novak</h4>
+                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Lead Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-300" style="padding: 0; border: none; background: transparent;">
+                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
+                            <img src="team-emma.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" onerror="this.src='https://placehold.co/400x533/555/FFF?text=Emma';">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                                <h4 style="margin: 0; color: #fff;">Emma Carter</h4>
+                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Client Success</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section text-center" style="background: linear-gradient(to top, var(--bg-surface-2), var(--bg-body));">
+            <div class="container">
+                <h2 class="reveal">We are always hunting for talent.</h2>
+                <p class="reveal delay-100">If you are obsessed with pixel-perfection and clean code, we want to talk.</p>
+                <div class="reveal delay-200" style="margin-top: 2rem;">
+                    <a href="careers.html" class="btn btn-secondary">View Open Positions</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bg-text">ZYROVA</div>
+        
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 2rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                    </svg>
+                    Zyrova
+                </a>
+                <p>
+                    HQ: Austin, Texas<br>
+                    Global Operations
+                </p>
+                <div class="flex gap-1">
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">𝕏</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">in</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">IG</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-heading">Services</div>
+                <a href="services.html" class="footer-link">Web Development</a>
+                <a href="services.html" class="footer-link">Local SEO</a>
+                <a href="services.html" class="footer-link">Paid Ads</a>
+                <a href="services.html" class="footer-link">Copywriting</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Company</div>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="case-studies.html" class="footer-link">Case Studies</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Legal</div>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Sitemap</a>
+            </div>
+        </div>
+
+        <div class="container copyright">
+            <div class="copyright-left">
+                &copy; 2026 Zyrova Digital. All rights reserved.
+            </div>
+            
+            <a href="about.html" class="owner-signature">Designed by Akash Jadon</a>
+        </div>
+    </footer>
+
+    <script>
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+    </script>
+    <script src="script.js" defer></script>
+</body>
+</html>

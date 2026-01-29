@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Pricing & Packages | Zyrova Digital</title>
+    <meta name="description" content="Transparent web design pricing. One-time fees, no monthly rentals. You own your code. Packages starting from $199.">
+    <link rel="canonical" href="https://zyrova.com/pricing">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Page-Specific Styles */
+        .price-card-popular {
+            border: 1px solid var(--c-brand-light);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-neon);
+            z-index: 10;
+            background: rgba(14, 116, 144, 0.1);
+        }
+        
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .check-list svg {
+            flex-shrink: 0;
+            color: var(--c-success);
+            margin-top: 2px;
+        }
+        
+        /* FAQ Styling */
+        details {
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        details[open] { padding-bottom: 2rem; }
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+        details[open] summary::after { transform: rotate(45deg); color: var(--c-brand-light); }
+        .faq-answer {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .price-card-popular { transform: scale(1); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                </svg>
+                Zyrova
+            </a>
+
+            <nav>
+                <button class="nav-toggle" aria-label="Open Menu">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="case-studies.html" class="nav-link">Results</a></li>
+                    <li><a href="pricing.html" class="nav-link" style="color:var(--c-brand-light)">Pricing</a></li>
+                    <li><a href="about.html" class="nav-link">Agency</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact.html" class="btn btn-primary">Start Project</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section text-center" style="padding-bottom: 2rem; padding-top: 150px;">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge mb-2">Transparent Pricing</span>
+                    <h1>Investment, not expense.</h1>
+                    <p class="mb-4" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Stop renting your website. Get a custom digital asset you own 100%. 
+                        <br><strong class="text-accent">No monthly fees. No contracts.</strong>
+                    </p>
+                </div>
+                
+                <div class="reveal delay-100 flex justify-center items-center gap-2 mb-4">
+                    <span style="font-weight: 600; color: var(--text-primary);">One-Time Payment</span>
+                    <div style="background: var(--c-brand-light); color: var(--c-brand-dark); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold;">YOU OWN IT</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="grid-3 items-center" style="align-items: stretch;">
+                    
+                    <div class="glass-card reveal delay-100" style="border-top: 4px solid var(--text-secondary);">
+                        <h3 style="margin-bottom: 0.5rem;">Fast Launch</h3>
+                        <p style="font-size: 0.9rem;">Perfect for new local businesses.</p>
+                        
+                        <div style="margin: 1.5rem 0;">
+                            <span style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary);">$199</span>
+                            <span style="color: var(--text-tertiary);">/ one-time</span>
+                        </div>
+                        
+                        <a href="contact.html?plan=fast" class="btn btn-secondary w-full mb-4">Select Basic</a>
+                        
+                        <ul class="check-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                One-Page High Speed Site
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Mobile Responsive Design
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Basic SEO Setup
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Contact Form Integration
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                7-Day Delivery
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card price-card-popular reveal">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; background: var(--c-brand-light); color: var(--c-brand-dark); padding: 0.25rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Most Popular</div>
+                        
+                        <h3 style="margin-top: 1rem; margin-bottom: 0.5rem;">Growth Engine</h3>
+                        <p style="font-size: 0.9rem;">For businesses ready to scale.</p>
+                        
+                        <div style="margin: 1.5rem 0;">
+                            <span style="font-size: 3rem; font-weight: 800; color: var(--c-brand-light);">$349</span>
+                            <span style="color: var(--text-tertiary);">/ one-time</span>
+                        </div>
+                        
+                        <a href="contact.html?plan=growth" class="btn btn-primary w-full mb-4">Select Growth</a>
+                        
+                        <ul class="check-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <strong>5-Page Custom Website</strong>
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <strong>Google Maps Optimization (GMB)</strong>
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Advanced "Near Me" SEO Schema
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Custom Booking System Integration
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Professional Copywriting Included
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                30-Days Priority Support
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card reveal delay-200" style="border-top: 4px solid var(--c-accent-gold);">
+                        <h3 style="margin-bottom: 0.5rem;">Brand & Scale</h3>
+                        <p style="font-size: 0.9rem;">Multi-location or custom functionality.</p>
+                        
+                        <div style="margin: 1.5rem 0;">
+                            <span style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary);">$499</span>
+                            <span style="color: var(--text-tertiary);">/ one-time</span>
+                        </div>
+                        
+                        <a href="contact.html?plan=custom" class="btn btn-secondary w-full mb-4">Select Premium</a>
+                        
+                        <ul class="check-list">
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Unlimited Pages
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Custom Web App Features
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Multi-Location SEO Strategy
+                            </li>
+                            <li>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                CRM / Patient Portal Integration
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                
+                <div class="text-center mt-4 reveal delay-300">
+                    <p style="font-size: 0.9rem; color: var(--text-tertiary);">
+                        Need a custom quote? <a href="contact.html" class="text-accent">Contact us directly</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="background: linear-gradient(to right, rgba(14, 116, 144, 0.05), transparent);">
+            <div class="container grid-2 items-center">
+                <div class="reveal">
+                    <h3>Peace of Mind Maintenance</h3>
+                    <p>While you don't <em>need</em> monthly maintenance (our sites are static and unbreakable), many clients prefer to have us on speed dial for content updates, blogs, and new offers.</p>
+                </div>
+                <div class="glass-card reveal delay-100 flex items-center justify-between">
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.25rem;">Optional Monthly Support</div>
+                        <ul style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-secondary); list-style: none;">
+                            <li>✓ Unlimited Content Edits</li>
+                            <li>✓ Monthly Performance Report</li>
+                            <li>✓ 24/7 Uptime Monitoring</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--c-brand-light);">$49</div>
+                        <div style="font-size: 0.8rem; color: var(--text-tertiary);">/ month</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container" style="max-width: 800px;">
+                <h2 class="text-center mb-4 reveal">Frequently Asked Questions</h2>
+                
+                <div class="reveal delay-100">
+                    <details>
+                        <summary>Why do you charge one-time instead of monthly?</summary>
+                        <div class="faq-answer">
+                            We believe you should own your business assets. When you pay monthly for Wix or an agency retainer, you are renting. If you stop paying, your site disappears. With Zyrova, once the invoice is paid, you own the code, the domain, and the design forever.
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary>How long does it take to launch?</summary>
+                        <div class="faq-answer">
+                            Our "Fast Launch" package typically goes live in 7 days. The "Growth Engine" takes about 2-3 weeks depending on how quickly we receive your photos and content.
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary>Will I be able to edit the website myself?</summary>
+                        <div class="faq-answer">
+                            Yes. We can set up a headless CMS (Content Management System) that allows you to edit text, change prices, and swap photos easily without touching any code.
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary>What about hosting and domain fees?</summary>
+                        <div class="faq-answer">
+                            We recommend Netlify or Vercel for hosting, which are often free for small business sites, or very low cost ($0-$20/mo). Domain names (yourname.com) cost about $12/year, which you pay directly to the registrar.
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Do you write the text/copy?</summary>
+                        <div class="faq-answer">
+                            Yes! Our "Growth Engine" package includes professional copywriting optimized for conversion. For the "Fast Launch" package, we provide templates for you to fill out.
+                        </div>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section text-center">
+            <div class="container">
+                <h2 class="reveal">Ready to build your digital asset?</h2>
+                <div class="reveal delay-100" style="margin-top: 2rem;">
+                    <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bg-text">ZYROVA</div>
+        
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 2rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                    </svg>
+                    Zyrova
+                </a>
+                <p>
+                    HQ: Austin, Texas<br>
+                    Global Operations
+                </p>
+                <div class="flex gap-1">
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">𝕏</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">in</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">IG</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-heading">Services</div>
+                <a href="services.html" class="footer-link">Web Development</a>
+                <a href="services.html" class="footer-link">Local SEO</a>
+                <a href="services.html" class="footer-link">Paid Ads</a>
+                <a href="services.html" class="footer-link">Copywriting</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Company</div>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="case-studies.html" class="footer-link">Case Studies</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Legal</div>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Sitemap</a>
+            </div>
+        </div>
+
+        <div class="container copyright">
+            <div class="copyright-left">
+                &copy; 2026 Zyrova Digital. All rights reserved.
+            </div>
+            
+            <a href="about.html" class="owner-signature">Designed by Akash Jadon</a>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

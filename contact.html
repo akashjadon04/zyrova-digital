@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Contact Us & Start Project | Zyrova Digital</title>
+    <meta name="description" content="Ready to grow? Contact Zyrova Digital for a free website audit and launch plan. Austin-based web design and SEO agency.">
+    <link rel="canonical" href="https://zyrova.com/contact">
+    <meta name="theme-color" content="#020617">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Custom Map Styling via CSS Filters */
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-glass);
+        }
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            /* Grayscale and tint map to match theme */
+            filter: grayscale(100%) contrast(1.2) opacity(0.8) invert(90%) hue-rotate(180deg);
+            transition: filter 0.5s ease;
+        }
+        .map-container:hover .map-frame {
+            filter: grayscale(0%) contrast(1) opacity(1) invert(90%) hue-rotate(180deg);
+        }
+
+        /* Calendly Widget Simulation */
+        .calendly-card {
+            background: var(--bg-surface-1);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .calendly-card:hover {
+            border-color: var(--c-brand-light);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                </svg>
+                Zyrova
+            </a>
+
+            <nav>
+                <button class="nav-toggle" aria-label="Open Menu">☰</button>
+                <ul class="nav-menu">
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="case-studies.html" class="nav-link">Results</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                    <li><a href="about.html" class="nav-link">Agency</a></li>
+                    <li><a href="contact.html" class="nav-link" style="color:var(--c-brand-light)">Contact</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact.html" class="btn btn-primary">Start Project</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="section" style="padding-top: 180px; padding-bottom: 4rem;">
+            <div class="container">
+                <div class="grid-2" style="grid-template-columns: 1fr 1.2fr; gap: 4rem;">
+                    
+                    <div class="reveal">
+                        <span class="badge mb-2">Let's Talk</span>
+                        <h1 class="mb-2">Build your <span class="text-gradient">growth engine</span>.</h1>
+                        <p class="mb-4">Fill out the form to get a free manual audit of your current site and a launch plan. We usually reply within 2 hours.</p>
+
+                        <div class="mb-4">
+                            <a href="tel:+15125550123" class="flex items-center gap-2 mb-2 card" style="padding: 1rem; text-decoration: none; border: 1px solid var(--border-glass);">
+                                <div class="card-icon" style="width: 40px; height: 40px; margin: 0; font-size: 1.2rem; margin-bottom: 0;">📞</div>
+                                <div>
+                                    <div style="font-size: 0.8rem; color: var(--text-tertiary);">Call Us Now</div>
+                                    <div style="font-weight: 700; color: var(--text-primary);">+1 07668758238</div>
+                                </div>
+                            </a>
+
+                            <a href="mailto:USAWEBMASTERSDRIP@gmail.com" class="flex items-center gap-2 mb-4 card" style="padding: 1rem; text-decoration: none; border: 1px solid var(--border-glass);">
+                                <div class="card-icon" style="width: 40px; height: 40px; margin: 0; font-size: 1.2rem; margin-bottom: 0;">✉️</div>
+                                <div>
+                                    <div style="font-size: 0.8rem; color: var(--text-tertiary);">Email Us</div>
+                                    <div style="font-weight: 700; color: var(--text-primary);">USAWEBMASTERSDRIP@gmail.com</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="calendly-card mb-4">
+                            <h3>Hate forms?</h3>
+                            <p style="margin-bottom: 1rem;">Skip the email tag and book a 15-min strategy call directly.</p>
+                            <a href="#" onclick="alert('This would open the Calendly Popup'); return false;" class="btn btn-secondary w-full" style="justify-content: center;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                Book Strategy Call
+                            </a>
+                        </div>
+
+                        <div class="map-container">
+                            <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d220478.43574944985!2d-97.89354020364936!3d30.307982269992015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b599a0cc032f%3A0x5d9b464bd469d57a!2sAustin%2C%20TX!5e0!3m2!1sen!2sus!4v1645561234567!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="reveal delay-100">
+                        <div class="form-card" style="padding: 3rem; background: var(--bg-surface-1); box-shadow: var(--shadow-lg);">
+                            <h2 class="mb-2">Project Request</h2>
+                            
+                            <form action="https://formsubmit.co/usawebmastersdrip@gmail.com" method="POST">
+                                <input type="hidden" name="_next" value="https://akashjadon04.github.io/zyrova-digital/success.html">
+                                <input type="hidden" name="_subject" value="New Zyrova Lead!">
+                                <input type="hidden" name="_captcha" value="false">
+                                
+                                <div class="input-group">
+                                    <input type="text" name="name" id="name" class="input-field" placeholder=" " required>
+                                    <label for="name" class="input-label">Full Name</label>
+                                </div>
+
+                                <div class="grid-2 gap-1">
+                                    <div class="input-group">
+                                        <input type="email" name="email" id="email" class="input-field" placeholder=" " required>
+                                        <label for="email" class="input-label">Email Address</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="tel" name="phone" id="phone" class="input-field" placeholder=" ">
+                                        <label for="phone" class="input-label">Phone (Optional)</label>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <input type="url" name="website" id="website" class="input-field" placeholder=" ">
+                                    <label for="website" class="input-label">Current Website (if any)</label>
+                                </div>
+
+                                <div class="input-group">
+                                    <select name="budget" id="budget" class="input-field" style="padding-top: 1.25rem;">
+                                        <option value="" disabled selected>Select an option</option>
+                                        <option value="fast">Fast Launch ($199)</option>
+                                        <option value="growth">Growth Engine ($349)</option>
+                                        <option value="custom">Premium Scale ($499+)</option>
+                                        <option value="audit">Just a Free Audit</option>
+                                    </select>
+                                    <label for="budget" class="input-label" style="top: 0.25rem; font-size: 0.75rem; color: var(--c-brand-light);">Interested In</label>
+                                </div>
+
+                                <div class="input-group">
+                                    <textarea name="message" id="message" class="input-field" rows="4" placeholder=" "></textarea>
+                                    <label for="message" class="input-label">Tell us about your project goals...</label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-full">
+                                    Get Free Launch Plan →
+                                </button>
+                                
+                                <p class="text-center mt-2" style="font-size: 0.8rem; color: var(--text-tertiary);">
+                                    By submitting, you agree to our <a href="privacy.html" style="text-decoration: underline; color:var(--text-secondary);">Privacy Policy</a>. We hate spam.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section text-center" style="padding-top: 0;">
+            <div class="container" style="max-width: 700px;">
+                <h3 class="reveal">Common Questions</h3>
+                <div class="grid-2 mt-4 text-left">
+                    <div class="reveal delay-100">
+                        <strong class="text-accent">Is the audit really free?</strong>
+                        <p style="font-size: 0.9rem;">Yes. We record a 5-minute video reviewing your site and SEO. No obligation.</p>
+                    </div>
+                    <div class="reveal delay-200">
+                        <strong class="text-accent">What happens next?</strong>
+                        <p style="font-size: 0.9rem;">We will email you to schedule a quick 15-min discovery call to see if we are a good fit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bg-text">ZYROVA</div>
+        
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 2rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 19h20L12 2zm0 3l5 12H7l5-12z"/>
+                    </svg>
+                    Zyrova
+                </a>
+                <p>
+                    HQ: Austin, Texas<br>
+                    Global Operations
+                </p>
+                <div class="flex gap-1">
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">𝕏</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">in</a>
+                    <a href="#" style="color:#fff; font-size: 1.5rem; text-decoration:none;">IG</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-heading">Services</div>
+                <a href="services.html" class="footer-link">Web Development</a>
+                <a href="services.html" class="footer-link">Local SEO</a>
+                <a href="services.html" class="footer-link">Paid Ads</a>
+                <a href="services.html" class="footer-link">Copywriting</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Company</div>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="case-studies.html" class="footer-link">Case Studies</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+
+            <div>
+                <div class="footer-heading">Legal</div>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Sitemap</a>
+            </div>
+        </div>
+
+        <div class="container copyright">
+            <div class="copyright-left">
+                © 2026 Zyrova Digital. All rights reserved.
+            </div>
+            
+            <a href="about.html" class="owner-signature">Designed by Akash Jadon</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan');
+            
+            if (plan) {
+                const select = document.getElementById('budget');
+                if (select) {
+                    select.value = plan;
+                }
+            }
+        });
+    </script>
+    
+    <script src="script.js" defer></script>
+</body>
+</html>
