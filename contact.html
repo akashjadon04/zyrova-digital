@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Zyrova // COMMAND CENTER</title>
-    <meta name="description" content="Secure Uplink Established. Initiate project sequence.">
+    <title>Contact Zyrova | Start Your Project</title>
+    <meta name="description" content="Ready to grow? Contact Zyrova Digital for high-performance web development and SEO.">
     <meta name="theme-color" content="#000000">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,156 +16,196 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* --- GOD MODE: COMMAND CENTER STYLES --- */
-        body { background: #000; overflow-x: hidden; padding-top: 40px; }
+        /* --- GOD MODE: OMEGA STYLES --- */
+        body { background: #020617; overflow-x: hidden; padding-top: 40px; }
 
-        /* 1. BACKGROUND HOLOGRAPHIC MAP */
-        .holo-map {
-            position: fixed; top: 20%; right: -10%; width: 80vw; height: 80vh;
+        /* 1. PLANETARY UPLINK (Background) */
+        .globe-overlay {
+            position: fixed; top: 15%; right: -10%; width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(14, 116, 144, 0.15) 0%, transparent 60%);
+            border-radius: 50%; z-index: -1; pointer-events: none;
+            animation: pulse-globe 8s infinite ease-in-out;
+        }
+        .globe-grid {
+            position: absolute; inset: 0; border-radius: 50%;
             background-image: 
-                linear-gradient(rgba(14, 116, 144, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14, 116, 144, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            transform: perspective(1000px) rotateX(60deg) rotateZ(-20deg) scale(1.5);
-            opacity: 0.3; pointer-events: none; z-index: -1;
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(1000px) rotateY(20deg) rotateX(40deg);
             mask-image: radial-gradient(circle, black 0%, transparent 70%);
         }
+        @keyframes pulse-globe { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.05); } }
 
-        /* 2. LAYOUT GRID */
-        .command-grid {
+        /* 2. SYSTEM STATUS HUD */
+        .system-hud {
+            position: fixed; top: 0; left: 0; width: 100%; height: 40px;
+            background: rgba(2, 6, 23, 0.95); border-bottom: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px); z-index: 9999;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--c-brand-light);
+        }
+        .blink-status { width: 6px; height: 6px; background: var(--c-success); border-radius: 50%; animation: blink 1s infinite; }
+
+        /* 3. LAYOUT STRUCTURE */
+        .apex-grid {
             display: grid; grid-template-columns: 1fr 1.2fr;
             min-height: 100vh;
         }
 
-        /* 3. LEFT PANEL: INTEL & TERMINAL */
-        .intel-panel {
-            padding: 4rem; display: flex; flex-direction: column; justify-content: center;
-            border-right: 1px solid rgba(255,255,255,0.05);
-            background: linear-gradient(to right, #000, rgba(2,6,23,0.8));
+        /* 4. LEFT PANEL: INTEL */
+        .intel-deck {
+            padding: 6rem 4rem; display: flex; flex-direction: column; justify-content: flex-start;
             position: relative;
         }
 
-        .terminal-window {
-            background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px; padding: 1.5rem; font-family: 'JetBrains Mono'; font-size: 0.8rem;
-            color: var(--c-success); margin-bottom: 3rem; box-shadow: 0 0 30px rgba(16,185,129,0.1);
-            min-height: 120px;
+        /* NEURAL TERMINAL */
+        .neural-terminal {
+            background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+            border-left: 2px solid var(--c-brand-light);
+            padding: 1.5rem; font-family: 'JetBrains Mono'; font-size: 0.8rem;
+            color: var(--c-success); margin-bottom: 3rem; min-height: 120px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
-        .cursor { display: inline-block; width: 8px; height: 14px; background: var(--c-success); animation: blink 1s infinite; }
 
-        .contact-method {
+        /* CONTACT METHODS */
+        .holo-card {
             display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02);
+            background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
+            border-top: 1px solid rgba(255,255,255,0.1);
             margin-bottom: 1rem; transition: all 0.3s; cursor: pointer; text-decoration: none;
         }
-        .contact-method:hover {
-            border-color: var(--c-brand-light); background: rgba(14, 116, 144, 0.1);
-            transform: translateX(10px);
-        }
-        .method-icon { font-size: 1.5rem; width: 40px; text-align: center; }
+        .holo-card:hover { padding-left: 2.5rem; border-color: var(--c-brand-light); background: linear-gradient(90deg, rgba(14, 116, 144, 0.1), transparent); }
 
-        /* 4. RIGHT PANEL: THE FORM (COCKPIT) */
-        .cockpit-panel {
+        /* 5. RIGHT PANEL: THE OMEGA FORM */
+        .cockpit-deck {
             padding: 4rem; display: flex; flex-direction: column; justify-content: center;
-            position: relative; transition: background 0.5s;
+            position: relative;
         }
 
-        /* DEFCON RED MODE (Urgent) */
-        .cockpit-panel.defcon-1 {
-            background: radial-gradient(circle at center, rgba(239, 68, 68, 0.1), transparent);
+        /* PREMIUM FORM CARD */
+        .omega-form {
+            background: rgba(10, 15, 30, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3.5rem;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .cockpit-panel.defcon-1 .form-group input, 
-        .cockpit-panel.defcon-1 .form-group textarea,
-        .cockpit-panel.defcon-1 .form-group select {
-            border-bottom-color: var(--c-danger);
+        
+        /* Glowing Corners */
+        .omega-form::before, .omega-form::after {
+            content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--c-brand-light); transition: 0.3s;
         }
-        .cockpit-panel.defcon-1 .submit-btn {
-            background: var(--c-danger); box-shadow: 0 0 30px rgba(239,68,68,0.4); border-color: var(--c-danger);
+        .omega-form::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+        .omega-form::after { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+        /* DEFCON RED MODE */
+        .omega-form.defcon-active {
+            border-color: rgba(239, 68, 68, 0.5);
+            box-shadow: 0 0 60px rgba(239, 68, 68, 0.15), inset 0 0 20px rgba(239, 68, 68, 0.05);
+        }
+        .omega-form.defcon-active::before, .omega-form.defcon-active::after { border-color: var(--c-danger); }
+        .omega-form.defcon-active .cyber-input { border-color: rgba(239, 68, 68, 0.3); }
+        .omega-form.defcon-active .cyber-input:focus { border-color: var(--c-danger); box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); }
+        .omega-form.defcon-active .submit-btn { background: var(--c-danger); color: #fff; }
+
+        /* CYBER INPUTS (Technical Look) */
+        .form-row { margin-bottom: 2rem; position: relative; }
+        
+        .cyber-input {
+            width: 100%; background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff; font-family: 'JetBrains Mono'; font-size: 0.95rem;
+            padding: 1.25rem 1rem; transition: all 0.3s;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+        }
+        .cyber-input:focus {
+            outline: none; border-color: var(--c-brand-light);
+            background: rgba(14, 116, 144, 0.05);
+            box-shadow: 0 0 20px rgba(103, 232, 249, 0.1);
+        }
+        
+        .cyber-label {
+            position: absolute; top: -0.7rem; left: 1rem;
+            background: #020617; padding: 0 0.5rem;
+            font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--c-brand-light);
+            letter-spacing: 1px;
         }
 
         /* PRIORITY SWITCH */
-        .defcon-switch {
+        .priority-control {
             display: flex; align-items: center; justify-content: space-between;
-            background: rgba(255,255,255,0.03); padding: 1rem; border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 2rem; cursor: pointer;
+            background: rgba(255,255,255,0.03); padding: 1rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1); margin-bottom: 2.5rem; cursor: pointer;
         }
-        .switch-ui {
-            width: 60px; height: 30px; background: #000; border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 30px; position: relative; transition: 0.3s;
+        .switch-rail {
+            width: 44px; height: 24px; background: rgba(0,0,0,0.5); border-radius: 20px;
+            position: relative; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s;
         }
-        .switch-knob {
-            width: 24px; height: 24px; background: var(--text-secondary); border-radius: 50%;
-            position: absolute; top: 2px; left: 2px; transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        .switch-orb {
+            width: 16px; height: 16px; background: #fff; border-radius: 50%;
+            position: absolute; top: 3px; left: 3px; transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        .defcon-switch.active .switch-ui { border-color: var(--c-danger); }
-        .defcon-switch.active .switch-knob { left: 32px; background: var(--c-danger); box-shadow: 0 0 10px var(--c-danger); }
-
-        /* FORM INPUTS */
-        .form-group { position: relative; margin-bottom: 2.5rem; }
-        .form-control {
-            width: 100%; background: transparent; border: none; border-bottom: 2px solid rgba(255,255,255,0.1);
-            padding: 1rem 0; color: #fff; font-family: 'Outfit'; font-size: 1.5rem;
-            transition: all 0.3s; border-radius: 0;
-        }
-        .form-control:focus { outline: none; border-bottom-color: var(--c-brand-light); padding-left: 1rem; }
-        .form-label {
-            position: absolute; top: 1rem; left: 0; font-family: 'JetBrains Mono'; font-size: 0.8rem;
-            color: var(--text-tertiary); pointer-events: none; transition: 0.3s; letter-spacing: 2px;
-        }
-        .form-control:focus ~ .form-label, .form-control:not(:placeholder-shown) ~ .form-label {
-            top: -1rem; font-size: 0.7rem; color: var(--c-brand-light);
-        }
-
-        /* VISUALIZER (Typing feedback) */
-        .signal-viz {
-            display: flex; gap: 4px; height: 20px; align-items: flex-end; opacity: 0.3; transition: 0.3s;
-            position: absolute; top: 1rem; right: 0;
-        }
-        .bar { width: 4px; background: var(--c-brand-light); animation: none; }
-        .form-control:focus ~ .signal-viz { opacity: 1; }
-        .form-control:focus ~ .signal-viz .bar { animation: equalizer 0.5s infinite; }
-        @keyframes equalizer { 0% { height: 20%; } 50% { height: 100%; } 100% { height: 20%; } }
+        .priority-control.active .switch-rail { border-color: var(--c-danger); }
+        .priority-control.active .switch-orb { left: 23px; background: var(--c-danger); box-shadow: 0 0 10px var(--c-danger); }
 
         /* SUBMIT BUTTON */
         .submit-btn {
-            width: 100%; padding: 2rem; background: var(--c-brand-main); border: 1px solid rgba(255,255,255,0.2);
-            color: #fff; font-family: 'JetBrains Mono'; font-weight: 700; letter-spacing: 3px;
-            cursor: pointer; transition: 0.3s; text-transform: uppercase;
+            width: 100%; padding: 1.5rem; background: var(--c-brand-main);
+            color: #fff; font-family: 'Outfit'; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s;
+            position: relative; overflow: hidden; font-size: 1.1rem;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         }
-        .submit-btn:hover { background: #fff; color: #000; box-shadow: 0 0 50px var(--c-brand-light); }
+        .submit-btn:hover { background: #fff; color: #000; box-shadow: 0 0 40px var(--c-brand-light); }
 
-        /* FAQ ACCORDION (Tactical) */
-        .faq-section { background: var(--bg-surface-1); padding: 6rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
-        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .faq-trigger {
-            width: 100%; padding: 2rem 0; background: none; border: none; text-align: left;
-            color: #fff; font-family: 'Outfit'; font-size: 1.25rem; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
+        /* PROTOCOL TIMELINE (Process) */
+        .timeline-section { padding: 6rem 0; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.01); }
+        .timeline-row { display: flex; gap: 4rem; position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline-step { flex: 1; position: relative; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.1); }
+        .timeline-step::before {
+            content: ''; position: absolute; top: -6px; left: 0; width: 10px; height: 10px;
+            background: #000; border: 2px solid var(--text-tertiary); transition: 0.3s;
         }
-        .faq-trigger:hover { color: var(--c-brand-light); padding-left: 1rem; }
-        .faq-content { max-height: 0; overflow: hidden; transition: 0.4s ease; color: var(--text-secondary); font-size: 1rem; }
-        .faq-item.open .faq-content { max-height: 200px; padding-bottom: 2rem; }
+        .timeline-step:hover::before { border-color: var(--c-brand-light); background: var(--c-brand-light); box-shadow: 0 0 15px var(--c-brand-light); }
+
+        /* TACTICAL FAQ */
+        .tactical-faq { max-width: 900px; margin: 0 auto 6rem; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .faq-head {
+            padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center;
+            font-family: 'Outfit'; font-size: 1.2rem; cursor: pointer; color: #fff; transition: 0.3s;
+        }
+        .faq-head:hover { color: var(--c-brand-light); padding-left: 10px; }
+        .faq-body { max-height: 0; overflow: hidden; color: var(--text-secondary); transition: 0.4s ease; font-size: 1rem; }
+        .faq-item.open .faq-body { max-height: 200px; padding-bottom: 1.5rem; }
 
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
-            .command-grid { grid-template-columns: 1fr; }
-            .intel-panel { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
-            .cockpit-panel { padding: 3rem 1.5rem; }
-            .holo-map { display: none; }
-            .form-control { font-size: 1.2rem; }
-            .switch-ui { transform: scale(0.9); }
+            .apex-grid { grid-template-columns: 1fr; }
+            .intel-deck { padding: 4rem 2rem 2rem; }
+            .cockpit-deck { padding: 2rem; }
+            .omega-form { padding: 2rem 1.5rem; }
+            .timeline-row { flex-direction: column; gap: 2rem; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem; border-top: none; }
+            .timeline-step { border-top: none; padding-top: 0; }
+            .timeline-step::before { top: 0; left: -38px; }
+            h1 { font-size: 3.5rem !important; }
         }
     </style>
 </head>
 
 <body>
 
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 40px; background: rgba(5,10,20,0.9); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--c-brand-light); z-index: 9999;">
+    <div class="system-hud">
         <div style="display:flex; align-items:center; gap:10px;">
-            <div style="width:8px; height:8px; background:var(--c-success); border-radius:50%; animation:blink 1s infinite;"></div>
-            UPLINK SECURE
+            <div class="blink-status"></div>
+            <span>SYSTEM STATUS: ONLINE</span>
         </div>
-        <div>ENCRYPTION: MIL-SPEC</div>
+        <div>
+            <span style="color:var(--text-tertiary);">EST:</span> 2026
+        </div>
     </div>
 
     <header class="header">
@@ -190,132 +230,150 @@
 
     <main>
         
-        <div class="holo-map"></div>
+        <div class="globe-overlay"><div class="globe-grid"></div></div>
 
-        <div class="command-grid">
+        <div class="apex-grid">
             
-            <div class="intel-panel reveal">
+            <div class="intel-deck reveal">
                 <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); margin-bottom: 1.5rem; letter-spacing: 3px; font-size: 0.8rem;">
-                    // COMMUNICATIONS DECK
+                    // START NEW PROJECT
                 </div>
                 
-                <h1 style="font-family: 'Outfit'; font-weight: 900; font-size: clamp(3rem, 5vw, 5rem); line-height: 0.9; margin-bottom: 2rem;">
-                    INITIATE <br> <span class="text-gradient">UPLINK.</span>
+                <h1 style="font-family: 'Outfit'; font-weight: 900; font-size: clamp(3.5rem, 6vw, 6rem); line-height: 0.9; margin-bottom: 2rem;">
+                    LET'S WORK <br> <span class="text-gradient">TOGETHER.</span>
                 </h1>
 
-                <div class="terminal-window" id="terminal-output">
-                    <span class="cursor"></span>
+                <div class="neural-terminal" id="terminal-out">
+                    <span class="cursor">_</span>
                 </div>
 
-                <a href="tel:+107668758238" class="contact-method">
-                    <div class="method-icon">📞</div>
+                <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 450px; line-height: 1.6; font-size: 1.1rem;">
+                    Ready to scale? We analyze every project brief manually. Expect a response from a lead engineer within 2 hours.
+                </p>
+
+                <a href="tel:+107668758238" class="holo-card">
+                    <div style="font-size: 1.5rem;">📞</div>
                     <div>
-                        <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-tertiary);">SECURE LINE</div>
-                        <div style="font-weight: 700; color: #fff; font-size: 1.1rem;">+1 07668758238</div>
+                        <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-tertiary);">DIRECT LINE</div>
+                        <div style="font-weight: 700; color: #fff;">+1 07668758238</div>
                     </div>
                 </a>
                 
-                <a href="mailto:USAWEBMASTERSDRIP@gmail.com" class="contact-method">
-                    <div class="method-icon">✉️</div>
+                <a href="mailto:USAWEBMASTERSDRIP@gmail.com" class="holo-card">
+                    <div style="font-size: 1.5rem;">✉️</div>
                     <div>
-                        <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-tertiary);">DATA STREAM</div>
-                        <div style="font-weight: 700; color: #fff; font-size: 1.1rem;">USAWEBMASTERSDRIP@gmail.com</div>
+                        <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-tertiary);">EMAIL</div>
+                        <div style="font-weight: 700; color: #fff;">USAWEBMASTERSDRIP@gmail.com</div>
                     </div>
                 </a>
-
-                <div style="margin-top: 2rem; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-tertiary);">
-                    LOCATION: GLOBAL // LATENCY: 12ms // STATUS: ONLINE
-                </div>
             </div>
 
-            <div class="cockpit-panel" id="cockpit">
-                
-                <div class="defcon-switch" onclick="toggleDefcon()">
-                    <div>
-                        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.1rem; color: #fff;">Transmission Priority</div>
-                        <div style="font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-tertiary);" id="priority-status">STANDARD CHANNEL</div>
-                    </div>
-                    <div class="switch-ui"><div class="switch-knob"></div></div>
-                </div>
-
-                <form action="https://formsubmit.co/usawebmastersdrip@gmail.com" method="POST">
-                    <input type="hidden" name="_next" value="https://akashjadon04.github.io/zyrova-digital/success.html">
-                    <input type="hidden" name="_subject" value="NEW ZYROVA UPLINK">
-                    <input type="hidden" name="_captcha" value="false">
-
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder=" " required>
-                        <label class="form-label">OPERATIVE NAME</label>
-                        <div class="signal-viz"><div class="bar"></div><div class="bar" style="animation-delay:0.1s"></div><div class="bar" style="animation-delay:0.2s"></div></div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder=" " required>
-                        <label class="form-label">COMMS FREQUENCY (EMAIL)</label>
-                        <div class="signal-viz"><div class="bar"></div><div class="bar" style="animation-delay:0.1s"></div><div class="bar" style="animation-delay:0.2s"></div></div>
-                    </div>
-
-                    <div class="grid-2 gap-1" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
-                        <div class="form-group">
-                            <input type="url" name="website" class="form-control" placeholder=" ">
-                            <label class="form-label">CURRENT ASSET URL</label>
+            <div class="cockpit-deck">
+                <div class="omega-form" id="omega-panel">
+                    
+                    <div class="priority-control" onclick="toggleDefcon()">
+                        <div>
+                            <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.1rem; color: #fff;">Project Urgency</div>
+                            <div style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-tertiary);" id="defcon-text">STANDARD TIMELINE</div>
                         </div>
-                        <div class="form-group">
-                            <select name="plan" id="plan-select" class="form-control" style="color: var(--text-tertiary); cursor: pointer;">
-                                <option value="" disabled selected>PROTOCOL...</option>
-                                <option value="fast">FAST LAUNCH ($199)</option>
-                                <option value="growth">GROWTH ENGINE ($349)</option>
-                                <option value="custom">PREMIUM SCALE ($499+)</option>
-                                <option value="audit">FREE AUDIT</option>
+                        <div class="switch-rail"><div class="switch-orb"></div></div>
+                    </div>
+
+                    <form action="https://formsubmit.co/usawebmastersdrip@gmail.com" method="POST">
+                        <input type="hidden" name="_next" value="https://akashjadon04.github.io/zyrova-digital/success.html">
+                        <input type="hidden" name="_subject" value="NEW ZYROVA PROJECT REQUEST">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <div class="form-row">
+                            <label class="cyber-label">YOUR NAME</label>
+                            <input type="text" name="name" class="cyber-input" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label class="cyber-label">EMAIL ADDRESS</label>
+                            <input type="email" name="email" class="cyber-input" required>
+                        </div>
+
+                        <div class="form-row">
+                            <label class="cyber-label">CURRENT WEBSITE (OPTIONAL)</label>
+                            <input type="url" name="website" class="cyber-input">
+                        </div>
+
+                        <div class="form-row">
+                            <label class="cyber-label">SELECT SERVICE PLAN</label>
+                            <select name="plan" id="plan-select" class="cyber-input" style="cursor: pointer; color: #fff;">
+                                <option value="" disabled selected style="color: #999;">Select a Plan...</option>
+                                <option value="fast" style="color: #000;">Fast Launch ($199)</option>
+                                <option value="growth" style="color: #000;">Growth Engine ($349)</option>
+                                <option value="custom" style="color: #000;">Custom Build ($499+)</option>
+                                <option value="audit" style="color: #000;">Free Audit Only</option>
                             </select>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <textarea name="message" class="form-control" rows="1" placeholder=" "></textarea>
-                        <label class="form-label">MISSION BRIEFING</label>
-                        <div class="signal-viz"><div class="bar"></div><div class="bar" style="animation-delay:0.1s"></div><div class="bar" style="animation-delay:0.2s"></div></div>
-                    </div>
+                        <div class="form-row">
+                            <label class="cyber-label">PROJECT DETAILS</label>
+                            <textarea name="message" class="cyber-input" rows="3"></textarea>
+                        </div>
 
-                    <button type="submit" class="submit-btn" id="submit-trigger">
-                        TRANSMIT DATA
-                    </button>
-                </form>
-
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            SUBMIT REQUEST
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <section class="faq-section">
-            <div class="container" style="max-width: 800px;">
+        <section class="timeline-section">
+            <div class="container">
                 <div class="reveal mb-4 text-center">
-                    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--text-tertiary);">// TACTICAL DEBRIEF</h2>
+                    <h2 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--text-tertiary);">// HOW IT WORKS</h2>
                 </div>
+                <div class="timeline-row reveal delay-100">
+                    <div class="timeline-step">
+                        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">01. Discovery</div>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">You submit the brief. We analyze your requirements manually.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">02. Strategy</div>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">We send a custom video audit and launch plan within 24 hours.</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">03. Build</div>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Development begins. Your site goes live in 7 days or less.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container tactical-faq">
+                <h2 class="text-center mb-4 reveal">Frequently Asked Questions</h2>
                 
                 <div class="reveal delay-100">
                     <div class="faq-item">
-                        <button class="faq-trigger">
+                        <div class="faq-head">
                             <span>Is the audit actually free?</span>
-                            <span style="font-size: 1.5rem;">+</span>
-                        </button>
-                        <div class="faq-content">
-                            Affirmative. We record a 5-minute manual video reviewing your site's code, SEO, and conversion blockers. No bots.
+                            <span>+</span>
+                        </div>
+                        <div class="faq-body">
+                            Yes. We record a 5-minute manual video reviewing your site's code, SEO, and conversion blockers. No bots, no obligation.
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-trigger">
+                        <div class="faq-head">
                             <span>What is the turnaround time?</span>
-                            <span style="font-size: 1.5rem;">+</span>
-                        </button>
-                        <div class="faq-content">
-                            Basic protocols launch in 7 days. Growth engines take 2-3 weeks. Priority clients (Red Switch) get expedited routing.
+                            <span>+</span>
+                        </div>
+                        <div class="faq-body">
+                            Basic sites launch in 7 days. Complex growth engines take 2-3 weeks. Priority clients (Rush Mode) get expedited service.
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-trigger">
+                        <div class="faq-head">
                             <span>Do you work globally?</span>
-                            <span style="font-size: 1.5rem;">+</span>
-                        </button>
-                        <div class="faq-content">
+                            <span>+</span>
+                        </div>
+                        <div class="faq-body">
                             Yes. We operate across all time zones. Payment is handled securely via Stripe in USD.
                         </div>
                     </div>
@@ -336,64 +394,60 @@
     <script src="script.js"></script>
     
     <script>
-        // 1. TERMINAL TYPING SIMULATION
-        const terminalText = "Connecting to secure server... \n> Establishing handshake... \n> Protocol verified. \n> Ready for user input.";
-        const terminalEl = document.getElementById('terminal-output');
+        // 1. TERMINAL TEXT EFFECT
+        const terminalText = "Connecting to server... \n> Ready for new project. \n> Awaiting user details...";
+        const terminalEl = document.getElementById('terminal-out');
         let charIndex = 0;
 
         function typeWriter() {
             if (charIndex < terminalText.length) {
                 const char = terminalText.charAt(charIndex);
-                terminalEl.innerHTML = terminalText.substring(0, charIndex) + (char === '\n' ? '<br>' : char) + '<span class="cursor"></span>';
+                terminalEl.innerHTML = terminalText.substring(0, charIndex) + (char === '\n' ? '<br>' : char) + '<span style="animation:blink 1s infinite">_</span>';
                 charIndex++;
-                setTimeout(typeWriter, Math.random() * 50 + 20);
+                setTimeout(typeWriter, Math.random() * 40 + 20);
             }
         }
-        setTimeout(typeWriter, 1000);
+        setTimeout(typeWriter, 800);
 
-        // 2. DEFCON SWITCH LOGIC
+        // 2. PRIORITY TOGGLE LOGIC
         let isDefcon = false;
         function toggleDefcon() {
             isDefcon = !isDefcon;
-            const cockpit = document.getElementById('cockpit');
-            const toggle = document.querySelector('.defcon-switch');
-            const status = document.getElementById('priority-status');
-            const btn = document.getElementById('submit-trigger');
+            const panel = document.getElementById('omega-panel');
+            const toggle = document.querySelector('.priority-control');
+            const text = document.getElementById('defcon-text');
+            const btn = document.getElementById('submit-btn');
 
             if (isDefcon) {
-                cockpit.classList.add('defcon-1');
+                panel.classList.add('defcon-active');
                 toggle.classList.add('active');
-                status.innerText = 'PRIORITY: URGENT (CODE RED)';
-                status.style.color = 'var(--c-danger)';
-                btn.innerText = 'TRANSMIT PRIORITY PACKET';
+                text.innerText = 'PRIORITY RUSH (EXPEDITED)';
+                text.style.color = 'var(--c-danger)';
+                btn.innerText = 'SEND PRIORITY REQUEST';
             } else {
-                cockpit.classList.remove('defcon-1');
+                panel.classList.remove('defcon-active');
                 toggle.classList.remove('active');
-                status.innerText = 'STANDARD CHANNEL';
-                status.style.color = 'var(--text-tertiary)';
-                btn.innerText = 'TRANSMIT DATA';
+                text.innerText = 'STANDARD TIMELINE';
+                text.style.color = 'var(--text-tertiary)';
+                btn.innerText = 'SUBMIT REQUEST';
             }
         }
 
-        // 3. AUTO-SELECT PLAN
+        // 3. AUTO-FILL PLAN
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             if (params.get('plan')) {
                 document.getElementById('plan-select').value = params.get('plan');
-                document.getElementById('plan-select').style.color = '#fff';
             }
         });
 
-        document.getElementById('plan-select').addEventListener('change', function() {
-            this.style.color = '#fff';
-        });
-
-        // 4. FAQ ACCORDION
-        document.querySelectorAll('.faq-trigger').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.parentElement.classList.toggle('open');
+        // 4. FAQ LOGIC
+        document.querySelectorAll('.faq-head').forEach(head => {
+            head.addEventListener('click', () => {
+                head.parentElement.classList.toggle('open');
             });
         });
     </script>
 </body>
 </html>
+
