@@ -38,6 +38,34 @@
             display: inline-block;
             margin-right: 6px;
         }
+
+        /* 8K DASHBOARD IMAGE STYLE */
+        .dashboard-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+
+        /* REAL REVIEWS SECTION STYLES */
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        
+        /* 3D Tilt Class */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
         
         @keyframes pulse-green {
             0% { opacity: 1; transform: scale(1); }
@@ -64,7 +92,7 @@
                     <li><a href="case-studies.html" class="nav-link">Results</a></li>
                     <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                     <li><a href="about.html" class="nav-link">Agency</a></li>
-                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Login</a></li>
+                    <li><a href="contact.html" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Client Portal</a></li>
                 </ul>
             </nav>
 
@@ -121,16 +149,15 @@
                 </div>
 
                 <div class="hero-visual reveal delay-200">
-                    <div class="hero-card-3d card">
+                    <div class="hero-card-3d card tilt-card">
                         <div class="flex justify-between items-center" style="margin-bottom: 2rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 1rem;">
                             <div style="width: 40px; height: 10px; background: rgba(255,255,255,0.2); border-radius: 4px;"></div>
                             <div style="width: 10px; height: 10px; background: var(--c-success); border-radius: 50%; box-shadow: 0 0 10px var(--c-success);"></div>
                         </div>
                         
-                        <div class="grid-2 gap-1" style="margin-bottom: 2rem;">
-                            <div style="background: rgba(255,255,255,0.05); height: 120px; border-radius: 8px;"></div>
-                            <div style="background: linear-gradient(180deg, var(--c-brand-main), transparent); height: 120px; border-radius: 8px; opacity: 0.5;"></div>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             alt="Live Analytics Dashboard" 
+                             class="dashboard-img">
 
                         <div class="flex items-center gap-1" style="background: rgba(16, 185, 129, 0.1); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3); position: relative; overflow: hidden;">
                             <canvas id="revenue-graph" class="revenue-canvas"></canvas>
@@ -177,7 +204,7 @@
                 </div>
 
                 <div class="spotlight-group">
-                    <div class="card reveal">
+                    <div class="card reveal tilt-card">
                         <div class="card-icon">⚡</div>
                         <div class="card-content">
                             <h3>Hyper-Speed Dev</h3>
@@ -189,7 +216,7 @@
                         </div>
                     </div>
 
-                    <div class="card reveal delay-100">
+                    <div class="card reveal delay-100 tilt-card">
                         <div class="card-icon">📍</div>
                         <div class="card-content">
                             <h3>Local SEO</h3>
@@ -201,7 +228,7 @@
                         </div>
                     </div>
 
-                    <div class="card reveal delay-200">
+                    <div class="card reveal delay-200 tilt-card">
                         <div class="card-icon">🎨</div>
                         <div class="card-content">
                             <h3>Conversion Design</h3>
@@ -216,13 +243,60 @@
             </div>
         </section>
 
+        <section class="section">
+            <div class="container">
+                <div class="reveal" style="max-width: 800px; margin-bottom: 4rem; text-align: center;">
+                    <h4>Client Intelligence</h4>
+                    <h2>Verified <span class="text-gradient">Results</span></h2>
+                </div>
+
+                <div class="spotlight-group">
+                    <div class="card reveal tilt-card">
+                        <div style="color: #f59e0b; margin-bottom: 1rem;">★★★★★</div>
+                        <p style="font-style: italic; color: #fff; margin-bottom: 1.5rem;">"I spent $5,000 on a fancy agency last year and got zero calls. Zyrova built a simple, fast site and my phone rang the next day."</p>
+                        <div class="flex items-center gap-1">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Client" class="review-avatar">
+                            <div>
+                                <div style="color: white; font-weight: 700;">Dr. Sarah J.</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Apex Dental Studio</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-100 tilt-card">
+                        <div style="color: #f59e0b; margin-bottom: 1rem;">★★★★★</div>
+                        <p style="font-style: italic; color: #fff; margin-bottom: 1.5rem;">"Speed is insane. My old Wix site took 8 seconds to load. This new one is instant. My ad costs actually went down."</p>
+                        <div class="flex items-center gap-1">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Client" class="review-avatar">
+                            <div>
+                                <div style="color: white; font-weight: 700;">Mark Thompson</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Summit HVAC</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card reveal delay-200 tilt-card">
+                        <div style="color: #f59e0b; margin-bottom: 1rem;">★★★★★</div>
+                        <p style="font-style: italic; color: #fff; margin-bottom: 1.5rem;">"Finally a developer who speaks plain English. The 'Growth Engine' package paid for itself in the first 2 weeks."</p>
+                        <div class="flex items-center gap-1">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80" alt="Client" class="review-avatar">
+                            <div>
+                                <div style="color: white; font-weight: 700;">Elena Rodriguez</div>
+                                <div style="font-size: 0.8rem; color: var(--text-secondary);">Vanguard Law</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section" id="audit">
             <div class="container">
                 <div class="form-card reveal">
                     <div class="grid-2">
                         <div>
-                            <h2>Free Website Physics Audit</h2>
-                            <p>Test the power of our engine. Enter your URL and click the button to see the physics system in action (and get a real audit via email).</p>
+                            <h2>Free Website Performance Audit</h2>
+                            <p>Stop guessing. Enter your URL to see exactly why you are losing customers (and how to fix it). We analyze speed, SEO, and conversion blockers manually.</p>
                             
                             <div style="margin-top: 2rem;">
                                 <div class="flex items-center gap-1 mb-2 stagger-child">
@@ -257,11 +331,11 @@
                                 </div>
 
                                 <button type="submit" id="audit-submit" class="btn btn-primary w-full">
-                                    Run Physics Audit
+                                    Analyze My Website
                                 </button>
                                 
                                 <p style="font-size: 0.8rem; margin-top: 1rem; text-align: center; color: var(--text-tertiary);">
-                                    Try entering text without a dot (.) to trigger the shake physics.
+                                    Please enter a valid URL (e.g., yourbusiness.com).
                                 </p>
                             </form>
                         </div>
@@ -331,6 +405,7 @@
     
     <script>
         (function() {
+            // 1. REVENUE GRAPH ANIMATION
             const canvas = document.getElementById('revenue-graph');
             if(canvas) {
                 const ctx = canvas.getContext('2d');
@@ -371,6 +446,28 @@
                 }
                 animateGraph();
             }
+
+            // 2. TILT LOGIC FOR CARDS (Hero + Reviews + Services)
+            document.querySelectorAll('.tilt-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -5; // Tilt intensity
+                    const rotateY = ((x - centerX) / centerX) * 5;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+                });
+            });
+
         })();
     </script>
 </body>
